@@ -6,7 +6,7 @@
 /*   By: rdutenke <rdutenke@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/16 19:59:45 by rdutenke          #+#    #+#             */
-/*   Updated: 2022/04/25 01:19:01 by rdutenke         ###   ########.fr       */
+/*   Updated: 2022/04/30 23:27:50 by rdutenke         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,7 @@ namespace ft {
 				this->_data = _alloc.allocate(_capacity * sizeof(value_type));	
 					
 				for (size_type i = 0; i < this->_size; i++)
-					this->_allocator.construct(_data + i, val);
+					this->_alloc.construct(_data + i, val);
 			}
   
 			template <class InputIterator>
@@ -70,7 +70,7 @@ namespace ft {
 				this->_alloc = alloc;
 				this->_data = _alloc.allocate(_capacity * sizeof(value_type));
 				for (size_type i = 0; i < this->_size; i++)
-					this->_allocator.construct(_data + i, *(first + i));
+					this->_alloc.construct(_data + i, *(first + i));
 			}
 
 			vector(const vector& vec)
