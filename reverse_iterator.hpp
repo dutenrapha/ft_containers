@@ -6,7 +6,7 @@
 /*   By: rdutenke <rdutenke@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/24 19:55:15 by rdutenke          #+#    #+#             */
-/*   Updated: 2022/04/24 20:40:20 by rdutenke         ###   ########.fr       */
+/*   Updated: 2022/05/01 16:32:11 by rdutenke         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,9 +39,10 @@ namespace ft {
 			this->_it = it;
 		}
 		
-		reverse_iterator(const reverse_iterator<Iterator> &other)
+		template <class Iter>
+		reverse_iterator(const reverse_iterator<Iter> &other)
 		{
-			*this = other;
+			this->_it = other.base();
 		}
 		
 		~reverse_iterator(void)
@@ -101,12 +102,12 @@ namespace ft {
 		
 		reverse_iterator operator+(difference_type n) const 
 		{
-			return reverse_iterator(_it - n); 
+			return reverse_iterator(base() - n);
 		}
 		
 		reverse_iterator operator-(difference_type n) const 
 		{ 
-			return reverse_iterator(_it + n); 
+			return reverse_iterator(base() + n); 
 		}
 		
 		reverse_iterator& operator+=(difference_type n)

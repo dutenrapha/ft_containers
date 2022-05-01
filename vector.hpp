@@ -6,7 +6,7 @@
 /*   By: rdutenke <rdutenke@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/16 19:59:45 by rdutenke          #+#    #+#             */
-/*   Updated: 2022/04/30 23:27:50 by rdutenke         ###   ########.fr       */
+/*   Updated: 2022/05/01 16:42:35 by rdutenke         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,8 +77,12 @@ namespace ft {
 			{
 				this->_size = vec._size;
 				this->_capacity = vec._capacity;
-				this->_data = this->_alloc.allocate(this->_capacity)
-				*this = vec;
+				this->_alloc = vec._alloc;
+				this->_data = this->_alloc.allocate(_capacity * sizeof(value_type));
+				for (size_type i = 0; i < _size; i++) 
+				{
+      				_alloc.construct(_data + i, vec._data[i]);
+    			}
 			}
 
 			~vector()
@@ -117,19 +121,39 @@ namespace ft {
 				return iterator(this->_data);
 			}
 
+			const_iterator begin(void) const
+			{
+				return const_iterator(this->_data);
+			}
+
 			iterator end(void) 
 			{
 				return iterator(this->_data + this->_size);
 			}
 
+			const_iterator end(void) const
+			{
+				return const_iterator(this->_data + this->_size);
+			}
+
 			reverse_iterator rbegin(void) 
 			{
-				return reverse_iterator(end());
+				return reverse_iterator(--this->end());
+			}
+
+			const_reverse_iterator rbegin(void) const
+			{
+				return const_reverse_iterator(--this->end());
 			}
 			
 			reverse_iterator rend(void)
 			{
-				return reverse_iterator(begin());
+				return reverse_iterator(--this->begin());
+			}
+
+			const_reverse_iterator rend(void) const
+			{
+				return const_reverse_iterator(--this->begin());
 			}
 
 			size_type size(void) const
@@ -203,6 +227,11 @@ namespace ft {
 				return (this->_data[n]);
 			}
 
+			const_reference operator[](size_type n) const
+			{
+				return (this->_data[n]);
+			}
+
 			reference	at(size_type n)
 			{
 				return (this->_data[n]);
@@ -213,7 +242,17 @@ namespace ft {
 				return (this->_data[0]);
 			}
 
+			const_reference	front(void) const
+			{
+				return (this->_data[0]);
+			}
+
 			reference	back(void)
+			{
+				return (this->_data[this->_size - 1]);
+			}
+
+			const_reference	back(void) const
 			{
 				return (this->_data[this->_size - 1]);
 			}
