@@ -6,7 +6,7 @@
 /*   By: rdutenke <rdutenke@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/22 00:27:56 by rdutenke          #+#    #+#             */
-/*   Updated: 2022/05/01 19:18:22 by rdutenke         ###   ########.fr       */
+/*   Updated: 2022/05/02 01:43:38 by rdutenke         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -621,8 +621,8 @@ void	test_12(void)
 	for (int i = 0; i < 12; ++i)
 	{
     	std::cout << "ft_v0["<< i << "] = " << ft_v0[i]  << std::endl;
-		std::cout << std::endl;
 	}
+	std::cout << std::endl;
 	std::cout << "----------------------------------------------" << std::endl;
 }
 
@@ -654,7 +654,7 @@ void	test_13(void)
 
 void	test_14(void)
 {
-	std::cout << "\033[1;31mTest 13: Test Vector Reserve \033[0m\n"<< std::endl;
+	std::cout << "\033[1;31mTest 14: Test Vector Reserve \033[0m\n"<< std::endl;
 	std::cout << "\033[1;32mft::vector<int> ft_v0; \033[0m\n";
 	ft::vector<int> ft_v0;
 	std::cout << "ft_v0.capacity() = " << ft_v0.capacity()  << std::endl;
@@ -679,7 +679,7 @@ void	test_14(void)
 
 void	test_15(void)
 {
-	std::cout << "\033[1;31mTest 13: Test Vector ElementAccess \033[0m\n"<< std::endl;
+	std::cout << "\033[1;31mTest 15: Test Vector ElementAccess \033[0m\n"<< std::endl;
 	std::cout << "\033[1;32mint arr1[] = {1, 2, 3, 4, 5}; \033[0m\n";
 	std::cout << "\033[1;32mft::vector<int> ft_v1(arr1, arr1 + 5); \033[0m\n";
 	std::cout << "\033[1;32mft_v1.reserve(56); \033[0m\n";
@@ -715,6 +715,591 @@ void	test_15(void)
 	std::cout << "----------------------------------------------" << std::endl;
 }
 
+void	test_16(void)
+{
+	std::cout << "\033[1;31mTest 16: Test Vector At \033[0m\n"<< std::endl;
+	std::cout << "\033[1;32mint arr1[] = {1, 2, 3, 4, 5}; \033[0m\n";
+	std::cout << "\033[1;32mft::vector<int> ft_v1(arr1, arr1 + 5); \033[0m\n";
+	std::cout << std::endl;
+	
+	int arr1[] = {1, 2, 3, 4, 5};
+	ft::vector<int> ft_v1(arr1, arr1 + 5);
+
+	for (int i = 0; i < 5; ++i)
+	{
+    	std::cout << "ft_v1.at("<< i <<") = " << ft_v1.at(i)  << std::endl;
+	}
+	std::cout << std::endl;
+	std::cout << "\033[1;32mft::vector<int> const ft_v2(arr1, arr1 + 5); \033[0m\n";
+	std::cout << std::endl;
+	
+	ft::vector<int> const ft_v2(arr1, arr1 + 5);
+
+	for (int i = 0; i < 5; ++i)
+	{
+    	std::cout << "ft_v2.at("<< i <<") = " << ft_v2.at(i)  << std::endl;
+	}
+	std::cout << std::endl;	
+	std::cout << "----------------------------------------------" << std::endl;
+}
+
+void	test_17(void)
+{
+	std::cout << "\033[1;31mTest 17: Test Vector Front \033[0m\n"<< std::endl;
+	std::cout << "\033[1;32mint arr1[] = {1, 2, 3, 4, 5}; \033[0m\n";
+	std::cout << "\033[1;32mft::vector<int> ft_v1(arr1, arr1 + 5); \033[0m\n";
+
+	int arr1[] = {1, 2, 3, 4, 5};
+	ft::vector<int> ft_v1(arr1, arr1 + 5);
+
+	std::cout << "ft_v1.front() = " << ft_v1.front()  << std::endl;
+	std::cout << std::endl;
+
+	std::cout << "\033[1;32mft::vector<int> const ft_v2(arr1, arr1 + 5); \033[0m\n";
+	
+	ft::vector<int> const ft_v2(arr1, arr1 + 5);
+	std::cout << "ft_v2.front() = " << ft_v2.front()  << std::endl;
+	std::cout << std::endl;
+	std::cout << "----------------------------------------------" << std::endl;
+}
+
+void	test_18(void)
+{
+	std::cout << "\033[1;31mTest 18: Test Vector Back \033[0m\n"<< std::endl;
+	std::cout << "\033[1;32mint arr1[] = {1, 2, 3, 4, 5}; \033[0m\n";
+	std::cout << "\033[1;32mft::vector<int> ft_v1(arr1, arr1 + 5); \033[0m\n";
+	
+
+	int arr1[] = {1, 2, 3, 4, 5};
+	ft::vector<int> ft_v1(arr1, arr1 + 5);
+
+	std::cout << "ft_v1.back() = " << ft_v1.back()  << std::endl;
+	std::cout << std::endl;
+
+	std::cout << "\033[1;32mft::vector<int> const ft_v2(arr1, arr1 + 5); \033[0m\n";
+
+	
+	ft::vector<int> const ft_v2(arr1, arr1 + 5);
+	std::cout << "ft_v2.back() = " << ft_v2.back()  << std::endl;
+	std::cout << std::endl;
+	std::cout << "----------------------------------------------" << std::endl;
+}
+
+void	test_19(void)
+{
+	std::cout << "\033[1;31mTest 19: Test Vector Assign \033[0m\n"<< std::endl;
+	std::cout << "\033[1;32mft::vector<int> ft_v1; \033[0m\n";
+	std::cout << "\033[1;32mft_v1.assign(7, 100); \033[0m\n";
+
+	ft::vector<int> ft_v1;
+	ft_v1.assign(7, 100);
+	for (int i = 0; i < 7; ++i)
+	{
+    	std::cout << "ft_v1["<< i <<"] = " << ft_v1[i]  << std::endl;
+	}
+	std::cout << std::endl;
+	
+	std::cout << "\033[1;32mft::vector<int> ft_v2; \033[0m\n";
+	std::cout << "\033[1;32mft::vector<int>::iterator it = ft_v1.begin() + 1; \033[0m\n";
+	std::cout << "\033[1;32mft_v2.assign(it, ft_v1.end() - 1); \033[0m\n";
+	std::cout << std::endl;
+	
+	ft::vector<int> ft_v2;
+	ft::vector<int>::iterator it = ft_v1.begin() + 1;
+	ft_v2.assign(it, ft_v1.end() - 1); 
+	for (int i = 0; i < 5; ++i)
+	{
+    	std::cout << "ft_v2["<< i <<"] = " << ft_v2[i]  << std::endl;
+	}
+	std::cout << std::endl;
+	
+	std::cout << "\033[1;32mint myints[] = {1776, 7, 4}; \033[0m\n";
+	std::cout << "\033[1;32mft::vector<int> ft_v3; \033[0m\n";
+	std::cout << "\033[1;32mft_v3.assign(myints, myints + 3); \033[0m\n";
+	std::cout << std::endl;
+	
+	ft::vector<int> ft_v3;
+	int myints[] = {1776, 7, 4};
+	ft_v3.assign(myints, myints + 3); 
+	std::cout << "ft_v3.size() = " << ft_v3.size() << std::endl;
+	for (int i = 0; i < 3; ++i)
+	{
+    	std::cout << "ft_v3["<< i <<"] = " << ft_v3[i]  << std::endl;
+	}
+	std::cout << std::endl;
+	std::cout << "----------------------------------------------" << std::endl;
+}
+
+void	test_20(void)
+{
+	std::cout << "\033[1;31mTest 20: Test Vector PushBack \033[0m\n"<< std::endl;
+	std::cout << "\033[1;32mft::vector<int> ft_v1; \033[0m\n";
+	std::cout << "\033[1;32mft_v1.push_back(42); \033[0m\n";
+
+	ft::vector<int> ft_v1;
+  	ft_v1.push_back(42);
+
+	std::cout << "ft_v1.size() = " << ft_v1.size() << std::endl;
+	std::cout << "ft_v1[0] = " << ft_v1[0] << std::endl;
+	std::cout << std::endl;
+
+	std::cout << "\033[1;32mft::vector<int> ft_v2(5); \033[0m\n";
+	std::cout << "\033[1;32mft_v2.push_back(42); \033[0m\n";
+
+	ft::vector<int> ft_v2(5);
+  	ft_v2.push_back(42);
+
+	std::cout << "ft_v2.size() = " << ft_v2.size() << std::endl;
+	for (int i = 0; i < 6; ++i)
+	{
+    	std::cout << "ft_v2["<< i <<"] = " << ft_v2[i]  << std::endl;
+	}
+	std::cout << std::endl;
+	
+	std::cout << "\033[1;32mft::vector<int> ft_v3(12, 42); \033[0m\n";
+	std::cout << "\033[1;32mft_v3.push_back(43); \033[0m\n";
+	
+	ft::vector<int> ft_v3(12, 42);
+  	ft_v3.push_back(43);
+
+	std::cout << "ft_v3.size() = " << ft_v3.size() << std::endl;
+	for (int i = 0; i < 13; ++i)
+	{
+    	std::cout << "ft_v3["<< i <<"] = " << ft_v3[i]  << std::endl;
+	}
+	
+	std::cout << "----------------------------------------------" << std::endl; 
+}
+
+void	test_21(void)
+{
+	std::cout << "\033[1;31mTest 21: Test Vector PopBack \033[0m\n"<< std::endl;
+	std::cout << "\033[1;32mft::vector<int> ft_v1(5); \033[0m\n";
+	std::cout << "\033[1;32mft_v1.pop_back(); \033[0m\n";
+
+	ft::vector<int> ft_v1(5);
+	ft_v1.pop_back();
+	std::cout << "ft_v1.size() = " << ft_v1.size() << std::endl;
+	std::cout << std::endl;
+	
+	std::cout << "\033[1;32mft::vector<int> ft_v2(12, 42); \033[0m\n";
+	std::cout << "\033[1;32mft_v2.pop_back(); \033[0m\n";
+	
+	ft::vector<int> ft_v2(12, 42);
+  	ft_v2.pop_back();
+	std::cout << "ft_v2.size() = " << ft_v2.size() << std::endl;
+	std::cout << std::endl;
+	std::cout << "----------------------------------------------" << std::endl; 
+}
+
+void	test_22(void)
+{
+	std::cout << "\033[1;31mTest 22: Test Vector Insert \033[0m\n"<< std::endl;
+	std::cout << "\033[1;32mft::vector<int> ft_v1(3, 100); \033[0m\n";
+	std::cout << "\033[1;32mft::vector<int>::iterator it = ft_v1.begin(); \033[0m\n";
+	std::cout << "\033[1;32mit = ft_v1.insert(it, 200); \033[0m\n";
+
+	ft::vector<int> ft_v1(3, 100);
+	ft::vector<int>::iterator it = ft_v1.begin();
+	it = ft_v1.insert(it, 200);
+	std::cout << "ft_v1.size() = " << ft_v1.size() << std::endl;
+	for (int i = 0; i < 4; ++i)
+	{
+    	std::cout << "ft_v1["<< i <<"] = " << ft_v1[i]  << std::endl;
+	}
+	std::cout << std::endl;
+	
+	std::cout << "\033[1;32mft_v1.insert(it, 2, 300); \033[0m\n";
+	ft_v1.insert(it, 2, 300);
+	std::cout << "ft_v1.size() = " << ft_v1.size() << std::endl;
+	for (int i = 0; i < 6; ++i)
+	{
+    	std::cout << "ft_v1["<< i <<"] = " << ft_v1[i]  << std::endl;
+	}
+	std::cout << std::endl;
+
+	std::cout << "\033[1;32mit = v1.begin(); \033[0m\n";
+	std::cout << "\033[1;32mft::vector<int> ft_v2(2, 400); \033[0m\n";
+	std::cout << "\033[1;32mft_v1.insert(it + 2, ft_v2.begin(), ft_v2.end()); \033[0m\n";
+	
+	it = ft_v1.begin();
+	ft::vector<int> ft_v2(2, 400);
+	ft_v1.insert(it + 2, ft_v2.begin(), ft_v2.end());
+	std::cout << "ft_v1.size() = " << ft_v1.size() << std::endl;
+	for (int i = 0; i < 8; ++i)
+	{
+    	std::cout << "ft_v1["<< i <<"] = " << ft_v1[i]  << std::endl;
+	}
+	std::cout << std::endl;
+
+	std::cout << "\033[1;32mint arr1[] = {501, 502, 503}; \033[0m\n";
+	std::cout << "\033[1;32mft_v1.insert(ft_v1.begin(), arr1, arr1 + 3); \033[0m\n";
+	
+	int arr1[] = {501, 502, 503};
+	ft_v1.insert(ft_v1.begin(), arr1, arr1 + 3);
+	std::cout << "ft_v1.size() = " << ft_v1.size() << std::endl;
+	for (int i = 0; i < 11; ++i)
+	{
+    	std::cout << "ft_v1["<< i <<"] = " << ft_v1[i]  << std::endl;
+	}
+	std::cout << std::endl;
+	
+	std::cout << "\033[1;32mft::vector<int> ft_v3(2, 500); \033[0m\n";
+	std::cout << "\033[1;32mft_v3.insert(ft_v3.begin() + 1, 250); \033[0m\n";
+
+	ft::vector<int> ft_v3(2, 500);
+	ft_v3.insert(ft_v3.begin() + 1, 250);
+	
+	std::cout << "ft_v3.size() = " << ft_v3.size() << std::endl;
+	for (int i = 0; i < 3; ++i)
+	{
+    	std::cout << "ft_v3["<< i <<"] = " << ft_v3[i]  << std::endl;
+	}
+	std::cout << std::endl;
+	std::cout << "----------------------------------------------" << std::endl; 
+}
+
+void	test_23(void)
+{
+	std::cout << "\033[1;31mTest 23: Test Vector Erase \033[0m\n"<< std::endl;
+	std::cout << "\033[1;32mint arr1[] = {1, 2, 3, 4, 5}; \033[0m\n";
+	std::cout << "\033[1;32mft::vector<int> ft_v1(arr1, arr1 + 5); \033[0m\n";
+	std::cout << "\033[1;32mft::vector<int>::iterator it = ft_v1.begin(); \033[0m\n";
+	std::cout << "\033[1;32mit = v1.erase(it + 2); \033[0m\n";
+	
+	int arr1[] = {1, 2, 3, 4, 5};
+  	ft::vector<int> ft_v1(arr1, arr1 + 5);
+  	ft::vector<int>::iterator it = ft_v1.begin();
+
+	it = ft_v1.erase(it + 2);
+	std::cout << "ft_v1.size() = " << ft_v1.size() << std::endl;
+	for (int i = 0; i < 4; ++i)
+	{
+    	std::cout << "ft_v1["<< i <<"] = " << ft_v1[i]  << std::endl;
+	}
+	std::cout << std::endl;
+
+	std::cout << "\033[1;32mit = v1.begin(); \033[0m\n";
+	std::cout << "\033[1;32mit = v1.erase(it + 1, v1.end()); \033[0m\n";
+
+	it = ft_v1.begin();
+	it = ft_v1.erase(it + 1, ft_v1.end());
+	std::cout << "ft_v1.size() = " << ft_v1.size() << std::endl;
+	std::cout << "ft_v1[0] = " << ft_v1[0]  << std::endl;
+	std::cout << std::endl;
+	
+	std::cout << "\033[1;32mft::vector<int> ft_v2(3, 200); \033[0m\n";
+	std::cout << "\033[1;32mit = ft_v2.begin(); \033[0m\n";
+	std::cout << "\033[1;32mit = ft_v2.erase(it, it + 2); \033[0m\n";
+
+	ft::vector<int> ft_v2(3, 200);
+  	it = ft_v2.begin();
+  	it = ft_v2.erase(it, it + 2);
+	std::cout << "ft_v2.size() = " << ft_v2.size() << std::endl;
+	std::cout << "ft_v2[0] = " << ft_v2[0]  << std::endl;
+	std::cout << std::endl;
+
+	std::cout << "\033[1;32mft::vector<int> ft_v3(3, 300); \033[0m\n";
+	std::cout << "\033[1;32mit = ft_v3.begin(); \033[0m\n";
+	std::cout << "\033[1;32mit = ft_v3.erase(it + 1); \033[0m\n";
+
+	ft::vector<int> ft_v3(3, 300);
+ 	it = ft_v3.begin();
+ 	it = ft_v3.erase(it + 1);
+
+	std::cout << "ft_v3.size() = " << ft_v3.size() << std::endl;
+	std::cout << "ft_v3[0] = " << ft_v3[0]  << std::endl;
+	std::cout << "ft_v3[1] = " << ft_v3[1]  << std::endl;
+	std::cout << std::endl;	
+	std::cout << "----------------------------------------------" << std::endl; 		
+}
+
+void	test_24(void)
+{
+	std::cout << "\033[1;31mTest 24: Test Vector Swap \033[0m\n"<< std::endl;
+	std::cout << "\033[1;32mft::vector<int> ft_v1(3, 100); \033[0m\n";
+	std::cout << "\033[1;32mft::vector<int> ft_v2(5, 200); \033[0m\n";
+	std::cout << "\033[1;32mft_v1.swap(ft_v2); \033[0m\n";
+
+	ft::vector<int> ft_v1(3, 100);
+  	ft::vector<int> ft_v2(5, 200);
+  	ft_v1.swap(ft_v2);
+
+	std::cout << "ft_v1.size() = " << ft_v1.size() << std::endl;
+	for (int i = 0; i < 5; ++i)
+	{
+    	std::cout << "ft_v1["<< i <<"] = " << ft_v1[i]  << std::endl;
+	}
+	std::cout << std::endl;
+	
+	std::cout << "ft_v2.size() = " << ft_v2.size() << std::endl;
+	for (int i = 0; i < 3; ++i)
+	{
+    	std::cout << "ft_v2["<< i <<"] = " << ft_v2[i]  << std::endl;
+	}
+	std::cout << std::endl;
+	std::cout << "----------------------------------------------" << std::endl;
+}
+
+void	test_25(void)
+{
+	std::cout << "\033[1;31mTest 25: Test Vector Clear \033[0m\n"<< std::endl;
+	std::cout << "\033[1;32mft::vector<int> ft_v1; \033[0m\n";
+	std::cout << "\033[1;32mft_v1.push_back(100); \033[0m\n";
+	std::cout << "\033[1;32mft_v1.push_back(200); \033[0m\n";
+	std::cout << "\033[1;32mft_v1.push_back(300); \033[0m\n";
+				
+	
+	ft::vector<int> ft_v1;
+	ft_v1.push_back(100);
+	ft_v1.push_back(200);
+	ft_v1.push_back(300);
+
+	std::cout << "ft_v1.size() = " << ft_v1.size() << std::endl;
+	for (int i = 0; i < 3; ++i)
+	{
+    	std::cout << "ft_v1["<< i <<"] = " << ft_v1[i]  << std::endl;
+	}
+	std::cout << std::endl;
+	std::cout << "\033[1;32mft_v1.clear();\033[0m\n";
+	ft_v1.clear();
+	std::cout << "ft_v1.size() = " << ft_v1.size() << std::endl;
+	std::cout << std::endl;
+
+	std::cout << "\033[1;32mft_v1.push_back(1101); \033[0m\n";
+	std::cout << "\033[1;32mft_v1.push_back(2202); \033[0m\n";
+
+	ft_v1.push_back(1101);
+  	ft_v1.push_back(2202);
+	std::cout << "ft_v1.size() = " << ft_v1.size() << std::endl;
+	for (int i = 0; i < 2; ++i)
+	{
+    	std::cout << "ft_v1["<< i <<"] = " << ft_v1[i]  << std::endl;
+	}
+	std::cout << std::endl;
+	std::cout << "----------------------------------------------" << std::endl;
+	
+}
+
+void	test_26(void)
+{
+	std::cout << "\033[1;31mTest 26: Test Vector GetAllocator \033[0m\n"<< std::endl;
+	std::cout << "\033[1;32mft::vector<int> ft_v1; \033[0m\n";
+	std::cout << "\033[1;32mint *p; \033[0m\n";
+	std::cout << "\033[1;32munsigned int i; \033[0m\n";
+	std::cout << "\033[1;32mp = ft_v1.get_allocator().allocate(5); \033[0m\n";
+	std::cout << "\033[1;32mfor (i = 0; i < 5; i++) \033[0m\n";
+	std::cout << "\033[1;32m{ \033[0m\n";
+	std::cout << "\033[1;32m	ft_v1.get_allocator().construct(&p[i], i + 1000); \033[0m\n";
+	std::cout << "\033[1;32m} \033[0m\n";
+	std::cout << "\033[1;32mfor (i = 0; i < 5; i++) \033[0m\n";
+	std::cout << "\033[1;32m{ \033[0m\n";
+	std::cout << "\033[1;32m	std::cout << \"p[\"<< i <<\"] = \" << p[i]  << std::endl; \033[0m\n";
+	std::cout << "\033[1;32m} \033[0m\n";
+	
+	std::cout << std::endl;
+	
+	ft::vector<int> ft_v1;
+	int *p;
+	unsigned int i;
+	p = ft_v1.get_allocator().allocate(5);
+
+	for (i = 0; i < 5; i++)
+	{
+    	ft_v1.get_allocator().construct(&p[i], i + 1000);
+  	}
+	
+  	for (i = 0; i < 5; i++)
+	{
+    	std::cout << "p["<< i <<"] = " << p[i]  << std::endl;
+  	}
+	  
+  	for (i = 0; i < 5; i++)
+	{
+   		ft_v1.get_allocator().destroy(&p[i]);
+  	}
+  	ft_v1.get_allocator().deallocate(p, 5);
+	std::cout << std::endl;
+	std::cout << "----------------------------------------------" << std::endl;
+}
+
+void	test_27(void)
+{
+	std::cout << "\033[1;31mTest 27: Test Vector Relational Operators \033[0m\n"<< std::endl;
+	std::cout << "\033[1;32mft::vector<int> ft_v1(3, 100); \033[0m\n";
+	std::cout << "\033[1;32mft::vector<int> ft_v2(3, 100); \033[0m\n";
+	std::cout << "\033[1;32mft::vector<int> ft_v3(2, 200); \033[0m\n";
+	std::cout << "\033[1;32mft::vector<int> ft_v4(3, 300); \033[0m\n";
+	std::cout << "\033[1;32mft::vector<int> ft_v5(3, 400); \033[0m\n";
+	std::cout << std::endl;
+	
+	ft::vector<int> ft_v1(3, 100);
+  	ft::vector<int> ft_v2(3, 100);
+ 	ft::vector<int> ft_v3(2, 200);
+ 	ft::vector<int> ft_v4(3, 300);
+ 	ft::vector<int> ft_v5(3, 400);
+
+	if (ft_v1 == ft_v2)
+		std::cout << "ft_v1 == ft_v2 ? -> TRUE"<< std::endl;
+	else
+		std::cout << "ft_v1 == ft_v2 ? -> FALSE"<< std::endl;
+
+	if (ft_v1 == ft_v3)
+		std::cout << "ft_v1 == ft_v3 ? -> TRUE"<< std::endl;
+	else
+		std::cout << "ft_v1 == ft_v3 ? -> FALSE"<< std::endl;
+
+	if (ft_v1 == ft_v4)
+		std::cout << "ft_v1 == ft_v4 ? -> TRUE"<< std::endl;
+	else
+		std::cout << "ft_v1 == ft_v4 ? -> FALSE"<< std::endl;
+
+	if (ft_v1 == ft_v5)
+		std::cout << "ft_v1 == ft_v5 ? -> TRUE"<< std::endl;
+	else
+		std::cout << "ft_v1 == ft_v5 ? -> FALSE"<< std::endl;
+	std::cout << std::endl;
+
+
+	if (ft_v1 != ft_v2)
+		std::cout << "ft_v1 != ft_v2 ? -> TRUE"<< std::endl;
+	else
+		std::cout << "ft_v1 != ft_v2 ? -> FALSE"<< std::endl;
+
+	if (ft_v1 != ft_v3)
+		std::cout << "ft_v1 != ft_v3 ? -> TRUE"<< std::endl;
+	else
+		std::cout << "ft_v1 != ft_v3 ? -> FALSE"<< std::endl;
+
+	if (ft_v1 != ft_v4)
+		std::cout << "ft_v1 != ft_v4 ? -> TRUE"<< std::endl;
+	else
+		std::cout << "ft_v1 != ft_v4 ? -> FALSE"<< std::endl;
+
+	if (ft_v1 != ft_v5)
+		std::cout << "ft_v1 != ft_v5 ? -> TRUE"<< std::endl;
+	else
+		std::cout << "ft_v1 != ft_v5 ? -> FALSE"<< std::endl;	
+  	std::cout << std::endl;
+
+
+	if (ft_v1 < ft_v2)
+		std::cout << "ft_v1 < ft_v2 ? -> TRUE"<< std::endl;
+	else
+		std::cout << "ft_v1 < ft_v2 ? -> FALSE"<< std::endl;
+
+	if (ft_v1 < ft_v3)
+		std::cout << "ft_v1 < ft_v3 ? -> TRUE"<< std::endl;
+	else
+		std::cout << "ft_v1 < ft_v3 ? -> FALSE"<< std::endl;
+
+	if (ft_v1 < ft_v4)
+		std::cout << "ft_v1 < ft_v4 ? -> TRUE"<< std::endl;
+	else
+		std::cout << "ft_v1 < ft_v4 ? -> FALSE"<< std::endl;
+
+	if (ft_v1 < ft_v5)
+		std::cout << "ft_v1 < ft_v5 ? -> TRUE"<< std::endl;
+	else
+		std::cout << "ft_v1 < ft_v5 ? -> FALSE"<< std::endl;	
+  	std::cout << std::endl;
+
+
+	if (ft_v1 <= ft_v2)
+		std::cout << "ft_v1 <= ft_v2 ? -> TRUE"<< std::endl;
+	else
+		std::cout << "ft_v1 <= ft_v2 ? -> FALSE"<< std::endl;
+
+	if (ft_v1 <= ft_v3)
+		std::cout << "ft_v1 <= ft_v3 ? -> TRUE"<< std::endl;
+	else
+		std::cout << "ft_v1 <= ft_v3 ? -> FALSE"<< std::endl;
+
+	if (ft_v1 <= ft_v4)
+		std::cout << "ft_v1 <= ft_v4 ? -> TRUE"<< std::endl;
+	else
+		std::cout << "ft_v1 <= ft_v4 ? -> FALSE"<< std::endl;
+
+	if (ft_v1 <= ft_v5)
+		std::cout << "ft_v1 <= ft_v5 ? -> TRUE"<< std::endl;
+	else
+		std::cout << "ft_v1 <= ft_v5 ? -> FALSE"<< std::endl;	
+  	std::cout << std::endl;
+
+
+	if (ft_v1 > ft_v2)
+		std::cout << "ft_v1 > ft_v2 ? -> TRUE"<< std::endl;
+	else
+		std::cout << "ft_v1 > ft_v2 ? -> FALSE"<< std::endl;
+
+	if (ft_v1 > ft_v3)
+		std::cout << "ft_v1 > ft_v3 ? -> TRUE"<< std::endl;
+	else
+		std::cout << "ft_v1 > ft_v3 ? -> FALSE"<< std::endl;
+
+	if (ft_v1 > ft_v4)
+		std::cout << "ft_v1 > ft_v4 ? -> TRUE"<< std::endl;
+	else
+		std::cout << "ft_v1 > ft_v4 ? -> FALSE"<< std::endl;
+
+	if (ft_v1 > ft_v5)
+		std::cout << "ft_v1 > ft_v5 ? -> TRUE"<< std::endl;
+	else
+		std::cout << "ft_v1 > ft_v5 ? -> FALSE"<< std::endl;	
+  	std::cout << std::endl;
+
+
+	if (ft_v1 >= ft_v2)
+		std::cout << "ft_v1 >= ft_v2 ? -> TRUE"<< std::endl;
+	else
+		std::cout << "ft_v1 >= ft_v2 ? -> FALSE"<< std::endl;
+
+	if (ft_v1 >= ft_v3)
+		std::cout << "ft_v1 >= ft_v3 ? -> TRUE"<< std::endl;
+	else
+		std::cout << "ft_v1 >= ft_v3 ? -> FALSE"<< std::endl;
+
+	if (ft_v1 >= ft_v4)
+		std::cout << "ft_v1 >= ft_v4 ? -> TRUE"<< std::endl;
+	else
+		std::cout << "ft_v1 >= ft_v4 ? -> FALSE"<< std::endl;
+
+	if (ft_v1 >= ft_v5)
+		std::cout << "ft_v1 >= ft_v5 ? -> TRUE"<< std::endl;
+	else
+		std::cout << "ft_v1 >= ft_v5 ? -> FALSE"<< std::endl;	
+  	std::cout << std::endl;
+	  
+	std::cout << "----------------------------------------------" << std::endl;
+}
+
+void	test_28(void)
+{
+	std::cout << "\033[1;31mTest 28: Test Vector Swap Overload \033[0m\n"<< std::endl;
+	std::cout << "\033[1;32mft::vector<int> ft_v1(3, 100); \033[0m\n";
+	std::cout << "\033[1;32mft::vector<int> ft_v2(5, 200); \033[0m\n";
+	std::cout << "\033[1;32mft::swap(ft_v1, ft_v2); \033[0m\n";
+
+	ft::vector<int> ft_v1(3, 100);
+	ft::vector<int> ft_v2(5, 200); 
+	ft::swap(ft_v1, ft_v2);
+
+	std::cout << "ft_v1.size() = " << ft_v1.size() << std::endl;
+	for (int i = 0; i < 5; ++i)
+	{
+    	std::cout << "ft_v1["<< i <<"] = " << ft_v1[i]  << std::endl;
+	}
+	std::cout << std::endl;
+	
+	std::cout << "ft_v2.size() = " << ft_v2.size() << std::endl;
+	for (int i = 0; i < 3; ++i)
+	{
+    	std::cout << "ft_v2["<< i <<"] = " << ft_v2[i]  << std::endl;
+	}
+	std::cout << std::endl;
+	std::cout << "----------------------------------------------" << std::endl;
+}
+
 int main(void)
 {
 	test_0();
@@ -733,5 +1318,18 @@ int main(void)
 	test_13();
 	test_14();
 	test_15();
+	test_16();
+	test_17();
+	test_18();
+	test_19();
+	test_20();
+	test_21();
+	test_22();
+	test_23();
+	test_24();
+	test_25();
+	test_26();
+	test_27();
+	test_28();
 	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: rdutenke <rdutenke@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/16 19:59:45 by rdutenke          #+#    #+#             */
-/*   Updated: 2022/05/01 16:42:35 by rdutenke         ###   ########.fr       */
+/*   Updated: 2022/05/02 00:57:16 by rdutenke         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@
 #include "random_access_iterator.hpp"
 #include "reverse_iterator.hpp"
 #include "algorithm.hpp"
+#include <sstream>
 
 
 namespace ft {
@@ -234,8 +235,15 @@ namespace ft {
 
 			reference	at(size_type n)
 			{
+				_M_range_check(n);
 				return (this->_data[n]);
 			}
+
+			const_reference at(size_type n) const 
+			{
+				_M_range_check(n);
+				return (this->_data[n]); 
+  			}
 
 			reference	front(void)
 			{
@@ -256,6 +264,28 @@ namespace ft {
 			{
 				return (this->_data[this->_size - 1]);
 			}
+
+			template< class it >
+			void assign(it first,
+						it last,
+						typename ft::enable_if<!ft::is_integral<it>::value, bool>::type = false)
+			{
+				if (this->_data)
+				{
+					this->_alloc.deallocate(this->_data, this->_capacity);
+				}
+				this->_size = last - first;
+				if (this->_capacity < this->_size)
+				{
+					this->_capacity = this->_size;
+				}
+				this->_data = this->_alloc.allocate(this->_capacity);
+				for (size_type i = 0; i < this->_size; i++)
+				{
+					this->_alloc.construct(&this->_data[i], *(first + i));
+				}
+			}
+			
 
 			void assign(size_type n, const value_type& val)
 			{
@@ -352,15 +382,13 @@ namespace ft {
 
 			iterator erase(iterator position)
 			{
-				if (this->size() == 0 || position >= this->end() || position < this->begin())
+				iterator iter = position;
+				
+				this->_alloc.destroy(&(*position));
+				while (iter != (this->end() - 1))
 				{
-					throw std::out_of_range("ft::vector::erase");
+					this->_alloc.construct(&(*iter), *(++iter));
 				}
-				for (size_type i = position - this->_data; i < this->_size - 1; i++)
-				{
-					_alloc.construct(this->_data + i, this->_data[i + 1]);
-				}
-				_alloc.destroy(this->_data + this->_size - 1);
 				this->_size--;
 				return position;
 			};
@@ -404,25 +432,23 @@ namespace ft {
 				return (this->_alloc);
 			}
 
-
-			
-
-
-
-
-
-
-
-
-
-
-
 		private:
 			value_type *_data;    
 			size_type _size;      
 			size_type _capacity;   
 			allocator_type _alloc; 
 			static const size_type _growth_factor = 2;
+
+			void _M_range_check(size_type __n) const
+			{
+				if (__n >= size())
+				{
+					std::stringstream ss;
+					ss << "vector::_M_range_check: __n (which is " << __n
+						<< ") >= this->size() (which is " << size() << ")";
+					throw std::out_of_range(ss.str());
+				}
+			}
 	};
 
 	template <class T, class Alloc>
@@ -430,6 +456,50 @@ namespace ft {
 	{
 		x.swap(y);
 	}
+
+	template <class T, class Alloc>
+	bool operator==(const vector<T, Alloc> &lhs, const vector<T, Alloc> &rhs)
+	{
+		if (lhs.size() != rhs.size()) 
+		{
+			return false;
+		}
+  		return ft::equal(lhs.begin(), lhs.end(), rhs.begin());
+	}
+
+	template <class T, class Alloc>
+	bool operator != (const vector<T,Alloc>& lhs, const vector<T,Alloc>& rhs)
+	{
+		return (!(lhs == rhs));
+	}
+
+	template <class T, class Alloc>
+	bool operator < (const vector<T,Alloc>& lhs, const vector<T,Alloc>& rhs)
+	{
+		return (ft::lexicographical_compare(lhs.begin(), lhs.end(), rhs.begin(), rhs.end()));
+	}
+
+	template <class T, class Alloc>
+	bool operator <= (const vector<T,Alloc>& lhs, const vector<T,Alloc>& rhs)
+	{
+		return ((lhs < rhs) || (lhs == rhs));
+	}
+
+	template <class T, class Alloc>
+	bool operator > (const vector<T,Alloc>& lhs, const vector<T,Alloc>& rhs)
+	{
+		if (lhs == rhs)
+			return (false);
+		return (!(lhs < rhs));
+	}
+	
+	template <class T, class Alloc>
+	bool operator >= (const vector<T,Alloc>& lhs, const vector<T,Alloc>& rhs)
+	{
+		return ((lhs > rhs) || (lhs == rhs));
+	}
+
+	
 }
 
 #endif

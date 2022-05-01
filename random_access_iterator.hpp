@@ -6,7 +6,7 @@
 /*   By: rdutenke <rdutenke@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/24 19:06:24 by rdutenke          #+#    #+#             */
-/*   Updated: 2022/04/24 20:37:19 by rdutenke         ###   ########.fr       */
+/*   Updated: 2022/05/01 21:10:01 by rdutenke         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@
 namespace ft {
 
 	template <typename T>
-	class random_access_iterator
+	class random_access_iterator 
 	{
 		public:
 			typedef	random_access_iterator<T>		iterator;
