@@ -6,11 +6,12 @@
 /*   By: rdutenke <rdutenke@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/22 00:27:56 by rdutenke          #+#    #+#             */
-/*   Updated: 2022/05/02 01:43:38 by rdutenke         ###   ########.fr       */
+/*   Updated: 2022/05/11 17:46:25 by rdutenke         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "vector.hpp"
+#include "pair.hpp"
 #include <vector>
 
 void	test_0(void)
@@ -1300,6 +1301,64 @@ void	test_28(void)
 	std::cout << "----------------------------------------------" << std::endl;
 }
 
+void test_29(void)
+{
+	std::cout << "\033[1;31mTest 29: Test pair and make_pair\033[0m\n"<< std::endl;
+	std::cout << "\033[1;32mft::pair <std::string,double> product1; \033[0m\n";
+	std::cout << "\033[1;32mft::pair <std::string,double> product2 (\"tomatoes\",2.30); \033[0m\n";
+	std::cout << "\033[1;32mft::pair <std::string,double> product3 (product2); \033[0m\n";
+	std::cout << "\033[1;32mproduct1 = ft::make_pair(std::string(\"lightbulbs\"),0.99); \033[0m\n";
+
+	ft::pair <std::string,double> product1;                     // default constructor
+  	ft::pair <std::string,double> product2 ("tomatoes",2.30);   // value init
+  	ft::pair <std::string,double> product3 (product2);          // copy constructor
+
+	if (product2 == product3)
+		std::cout << "product2 == product3 ? -> TRUE"<< std::endl;
+	else
+		std::cout << "product2 == product3 ? -> FALSE"<< std::endl;
+	std::cout << "\033[1;32mproduct2.first = \"shoes\"; \033[0m\n";
+	std::cout << "\033[1;32mproduct2.second = 39.90;  \033[0m\n";
+
+	product1 = ft::make_pair(std::string("lightbulbs"),0.99);   // using make_pair (move)
+	product2.first = "shoes";                  // the type of first is string
+	product2.second = 39.90;                   // the type of second is double
+	
+	if (product2 == product3)
+		std::cout << "product2 == product3 ? -> TRUE"<< std::endl;
+	else
+		std::cout << "product2 == product3 ? -> FALSE"<< std::endl;
+	
+	if (product2 != product3)
+		std::cout << "product2 != product3 ? -> TRUE"<< std::endl;
+	else
+		std::cout << "product2 != product3 ? -> FALSE"<< std::endl;
+
+	if (product2 <= product3)
+		std::cout << "product2 <= product3 ? -> TRUE"<< std::endl;
+	else
+		std::cout << "product2 <= product3 ? -> FALSE"<< std::endl;
+
+	if (product2 < product3)
+		std::cout << "product2 < product3 ? -> TRUE"<< std::endl;
+	else
+		std::cout << "product2 < product3 ? -> FALSE"<< std::endl;	
+
+	if (product2 >= product3)
+		std::cout << "product2 >= product3 ? -> TRUE"<< std::endl;
+	else
+		std::cout << "product2 >= product3 ? -> FALSE"<< std::endl;
+
+	if (product2 > product3)
+		std::cout << "product2 > product3 ? -> TRUE"<< std::endl;
+	else
+		std::cout << "product2 > product3 ? -> FALSE"<< std::endl;
+	
+	std::cout << "The price of " << product1.first << " is $" << product1.second <<  std::endl;
+	std::cout << "The price of " << product2.first << " is $" << product2.second <<  std::endl;
+  	std::cout << "The price of " << product3.first << " is $" << product3.second <<  std::endl;
+}
+
 int main(void)
 {
 	test_0();
@@ -1331,5 +1390,6 @@ int main(void)
 	test_26();
 	test_27();
 	test_28();
+	test_29();
 	return (0);
 }
