@@ -6,13 +6,15 @@
 /*   By: rdutenke <rdutenke@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/24 16:22:08 by rdutenke          #+#    #+#             */
-/*   Updated: 2022/04/24 20:37:22 by rdutenke         ###   ########.fr       */
+/*   Updated: 2022/05/27 21:55:58 by rdutenke         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 
 #ifndef ITERATORS_TRAITS_HPP
 #define ITERATORS_TRAITS_HPP
+
+#include <iostream>
 
 namespace ft {
 

@@ -1,7 +1,7 @@
 
 FLAGS = -Wall -Wextra -Werror -std=c++98 -fsanitize=address
 CC = c++
-FILE = main.cpp
+FILE = main2.cpp
 NAME = main 
 
 all: $(NAME)
