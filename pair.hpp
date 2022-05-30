@@ -6,7 +6,7 @@
 /*   By: rdutenke <rdutenke@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/11 17:09:24 by rdutenke          #+#    #+#             */
-/*   Updated: 2022/05/11 17:41:48 by rdutenke         ###   ########.fr       */
+/*   Updated: 2022/05/29 23:42:33 by rdutenke         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,24 +26,27 @@ namespace ft
 
 		public:
 
-			pair()
-			{
-				this->first = T1();
-				this->second = T2();
-			}
+			pair(): first(T1()), second(T2())     {}
+			pair(const T1 &u, const T2 &v) : first(u), second(v) {}
 
-			template<class U, class V>
-			pair (const pair<U,V>& pr)
-			{
-				this->first = pr.first;
-				this->second = pr.second;
-			}
+			// pair()
+			// {
+			// 	this->first = T1();
+			// 	this->second = T2();
+			// }
 
-			pair (const first_type& a, const second_type& b)
-			{
-				this->first = a;
-				this->second = b;	
-			}
+			// template<class U, class V>
+			// pair (const pair<U,V>& pr)
+			// {
+			// 	this->first = pr.first;
+			// 	this->second = pr.second;
+			// }
+
+			// pair (const first_type& a, const second_type& b)
+			// {
+			// 	this->first = a;
+			// 	this->second = b;	
+			// }
 			
 			pair& operator=(const pair& other)
 			{

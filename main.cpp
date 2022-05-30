@@ -6,7 +6,7 @@
 /*   By: rdutenke <rdutenke@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/22 00:27:56 by rdutenke          #+#    #+#             */
-/*   Updated: 2022/05/11 17:46:25 by rdutenke         ###   ########.fr       */
+/*   Updated: 2022/05/29 16:48:42 by rdutenke         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -1362,7 +1362,7 @@ void test_29(void)
 int main(void)
 {
 	test_0();
-	test_1();
+	// test_1();
 	test_2();
 	test_3();
 	test_4();

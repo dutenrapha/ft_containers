@@ -37,7 +37,7 @@ namespace ft {
 			};
 
 			template<class NodePtr, class PTR, class REF> class IT;
-			template<class NodePtr, class PTR, class REF> friend class IT;
+			// template<class NodePtr, class PTR, class REF> friend class IT;
 
 		public:
 			typedef T value_type;
@@ -246,10 +246,10 @@ namespace ft {
 	}
 
 	template<class T, class Alloc>
-	void TreeBase<T,Alloc>::deleteNode(NodePtr n) 
+	void TreeBase<T,Alloc>::deleteNode(NodePtr p) 
 	{
-		constr.destroy( &(n->value) ); 
-		alloc.deallocate(n, 1);
+		constr.destroy(&(p->value)); 
+		alloc.deallocate(p, 1);
 	}
 
 	template<class T, class Alloc>
@@ -315,7 +315,7 @@ namespace ft {
 			return;
 		}
 		clear(r->left); 
-		clear(r->right); 
+		clear(r->right);
 		deleteNode(r);
 	}
 
@@ -323,8 +323,8 @@ namespace ft {
 	pair<typename TreeBase<T,Alloc>::iterator, bool> TreeBase<T,Alloc>::insertNode(const T &e)
 	{
 
-		NodePtr r; // Apontador para o novo no.
-		if (root == NULL) // Arvore vazia.
+		NodePtr r;
+		if (root == NULL)
 		{
 			r = newNode(dummy, e);
 			root = r;
@@ -335,7 +335,7 @@ namespace ft {
 		{
 			r = root;
 			for (;;)
-				if (e < r->value) // Menor.	
+				if (e < r->value)
 				{							 
 					if (r->left != NULL)
 					{
@@ -347,7 +347,7 @@ namespace ft {
 						break;
 					}
 				}
-				else if (MULTI || r->value < e) // Maior.
+				else if (MULTI || r->value < e)
 				{		 
 					if (r->right != NULL)
 					{
@@ -359,7 +359,7 @@ namespace ft {
 						break;
 					}
 				}
-				else // Equivalentes.
+				else
 				{
 					return pair<iterator, bool>(r, false);
 				}
@@ -372,8 +372,7 @@ namespace ft {
 	typename TreeBase<T,Alloc>::NodePtr TreeBase<T,Alloc>::insertLeft(NodePtr r, const T &e)
 	{
 		r->left = newNode(r, e);
-		//Update
-		if( r == dummy->left ) // Actualiza left most.
+		if( r == dummy->left )
 		{
 			dummy->left = r->left;
 		}
@@ -384,7 +383,7 @@ namespace ft {
 	typename TreeBase<T,Alloc>::NodePtr TreeBase<T,Alloc>::insertRight(NodePtr r, const T &e)
 	{
 		r->right = newNode(r, e);
-		if(r == dummy->right) // Actualiza right most.
+		if(r == dummy->right)
 		{
 			dummy->right = r->right;
 		}
@@ -450,7 +449,7 @@ namespace ft {
 		{
 			r = r->left;
 		}
-				return r;
+		return r;
 	}
 
 	template<class T, class Alloc>
@@ -540,19 +539,163 @@ namespace ft {
 	template<class T, class Alloc>
 	typename TreeBase<T,Alloc>::size_type TreeBase<T,Alloc>::erase(const T &e)
 	{
-	size_type count = 0;	
-	iterator p = find(e);
-	if ( p != end() )
-	{
-		do
+		size_type count = 0;	
+		iterator p = find(e);
+		if ( p != end() )
 		{
-			++count;
-			erase(p++);
-		}		
-		while (p!=end() && !(e<*p));
+			do
+			{
+				++count;
+				erase(p++);
+			}		
+			while (p!=end() && !(e<*p));
+		}
+			return count;
 	}
-	return count;
+
+	template<class T, class Alloc>
+	void TreeBase<T,Alloc>::erase(iterator i)
+	{
+		NodePtr r = i.current;
+		if (r == dummy->left)
+		{
+			dummy->left=(++iterator(i)).current;
+		}
+
+		if (r == dummy->right) 
+		{
+			dummy->right=(--iterator(i)).current;
+		}
+
+		if (r->left == NULL)
+		{
+			transferParent(r, r->right);
+		}
+		else if (r->right == NULL)
+		{
+			transferParent(r, r->left);
+		}
+		else
+		{
+			NodePtr previous = rightMost(r->left);
+			transferParent(previous, previous->left);
+			transferNode(r, previous);
+		}
+		--sz;
+		deleteNode(r);
 	}
+
+	template<class T, class Alloc>
+	template< class NodePtr, class PTR, class REF>
+	class TreeBase<T,Alloc>::IT : public ft::iterator< bidirectional_iterator_tag, T,typename Alloc::difference_type, PTR, REF > 
+	{
+		// friend TreeBase<T,Alloc>;
+		
+		// friend TreeBase<T,Alloc>::const_iterator;										
+		
+		// NodePtr current; 
+		
+		void inc();
+		void dec();
+		
+		// IT(NodePtr p):current(p) {} 
+		public:
+			// IT() {}
+			NodePtr current; 
+			IT(NodePtr p):current(p) {} 
+			
+			template<class NP, class P, class R>
+			IT(IT<NP,P,R> i) : current(i.current) {}
+
+			IT &operator++()
+			{
+				inc(); 
+				return *this;
+			}
+
+			IT &operator--()
+			{
+				dec(); 
+				return *this;
+			}
+
+			IT operator++(int)
+			{
+				IT i(*this); 
+				inc(); 
+				return i;
+			}
+
+			IT operator--(int)
+			{
+				IT i(*this);
+				dec(); 
+				return i;
+			}
+
+			REF operator*() const
+			{
+				return current->value;
+			}
+
+			PTR operator->() const
+			{
+				return &current->value;
+			}
+
+			bool operator==(IT i) const
+			{
+				return current == i.current;
+			}
+
+			bool operator!=(IT i) const
+			{
+				return !(*this == i);
+			}
+	};
+
+	template<class T, class Alloc>
+	template<class NodePtr, class PTR, class REF>
+	void TreeBase<T,Alloc>::IT<NodePtr,PTR,REF>::inc()
+	{
+		if (current->right == NULL)
+		{
+			NodePtr ptr = current;
+			while ((current = current->parent)->right == ptr )
+			{
+				ptr = current;
+			}
+		}
+		else 
+		{
+			current = TreeBase<T,Alloc>::leftMost(current->right);
+		}
+	};
+
+	template<class T, class Alloc>
+	template<class NodePtr, class PTR, class REF>
+	void TreeBase<T,Alloc>::IT<NodePtr,PTR,REF>::dec()
+	{
+		if (current->left == NULL) {
+			NodePtr ptr = current;
+			while ((current=current->parent)->left == ptr)
+				ptr = current;
+		}
+		else
+		{
+			if(current->parent == current)
+			{
+				current = current->right;
+			}
+			else
+			{
+				current = TreeBase<T,Alloc>::rightMost(current->left);
+			}
+		}
+	}
+
+
+
 
 };
 

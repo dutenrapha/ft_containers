@@ -6,7 +6,7 @@
 /*   By: rdutenke <rdutenke@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/24 16:22:08 by rdutenke          #+#    #+#             */
-/*   Updated: 2022/05/27 21:55:58 by rdutenke         ###   ########.fr       */
+/*   Updated: 2022/05/29 22:29:32 by rdutenke         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,17 @@ namespace ft {
 	struct bidirectional_iterator_tag : public forward_iterator_tag {};
 
 	struct random_access_iterator_tag : public bidirectional_iterator_tag {};
+	
+
+	template <class Cat, class T, class Dist = std::ptrdiff_t, class Ptr = T*, class Ref = T&>
+	struct iterator
+	{
+		typedef Cat iterator_category;
+		typedef T   value_type;
+		typedef Dist difference_type;
+		typedef Ptr pointer;
+		typedef Ref reference;
+	};
 	
 	template <class T>
 	struct iterator_traits {
