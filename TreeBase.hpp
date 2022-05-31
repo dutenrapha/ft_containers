@@ -51,7 +51,7 @@ namespace ft {
 
 			typedef IT<NodePtr, pointer, reference> iterator;
 			typedef IT<ConstNodePtr, const_pointer, const_reference> const_iterator;
-
+			
 		protected:
 			Alloc constr;
 			ANode alloc;
