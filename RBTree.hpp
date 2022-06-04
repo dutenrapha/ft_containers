@@ -6,7 +6,7 @@
 /*   By: coder <coder@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/30 23:11:09 by rdutenke          #+#    #+#             */
-/*   Updated: 2022/06/04 17:55:23 by coder            ###   ########.fr       */
+/*   Updated: 2022/06/04 18:48:46 by coder            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -458,13 +458,12 @@ namespace ft {
 
 	template<class K, class V, class KFromV, class Cmp, class Alloc>
 	typename RBTree<K,V,KFromV,Cmp,Alloc>::NodePtr RBTree<K,V,KFromV,Cmp,Alloc>::copy(ConstNodePtr x)
-	{
-		NodePtr r = newNode(x);
-		
+	{	
 		if (x == NULL)
 		{
 			return NULL;
-		}		
+		}
+		NodePtr r = newNode(x);
 		r->left = copy(x->left);
 		SUPER::setParent(r->left, r);
 		r->right = copy(x->right);
