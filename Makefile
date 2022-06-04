@@ -1,7 +1,7 @@
 
 FLAGS = -Wall -Wextra -Werror -std=c++98 -fsanitize=address
 CC = c++
-FILE = main2.cpp
+FILE = main.cpp
 NAME = main 
 
 all: $(NAME)
@@ -16,4 +16,4 @@ test:
 re: fclean all test
 
 $(NAME):
-	$(CC) $(FLAGS) $(FILE) -o $@
+	$(CC) $(FLAGS) $(FILE) -g -o $@

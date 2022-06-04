@@ -3,16 +3,18 @@
 /*                                                        :::      ::::::::   */
 /*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rdutenke <rdutenke@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: coder <coder@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/22 00:27:56 by rdutenke          #+#    #+#             */
-/*   Updated: 2022/05/29 16:48:42 by rdutenke         ###   ########.fr       */
+/*   Updated: 2022/06/04 17:56:22 by coder            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "vector.hpp"
-#include "pair.hpp"
 #include <vector>
+#include "vector.hpp"
+#include <map>
+#include "map.hpp"
+#include "pair.hpp"
 
 void	test_0(void)
 {
@@ -1270,7 +1272,6 @@ void	test_27(void)
 	else
 		std::cout << "ft_v1 >= ft_v5 ? -> FALSE"<< std::endl;	
   	std::cout << std::endl;
-	  
 	std::cout << "----------------------------------------------" << std::endl;
 }
 
@@ -1357,12 +1358,80 @@ void test_29(void)
 	std::cout << "The price of " << product1.first << " is $" << product1.second <<  std::endl;
 	std::cout << "The price of " << product2.first << " is $" << product2.second <<  std::endl;
   	std::cout << "The price of " << product3.first << " is $" << product3.second <<  std::endl;
+	std::cout << std::endl;
+	std::cout << "----------------------------------------------" << std::endl;
+}
+
+void test_30(void)
+{
+	std::cout << "\033[1;31mTest 30: Test Map Default Constructor\033[0m\n"<< std::endl;
+	std::cout << "\033[1;32mft::map<int, int> ft_map; \033[0m\n";
+	
+	ft::map<int, int> ft_map;
+	std::cout << "\033[1;32mft_map.size() = \033[0m" << ft_map.size() <<  std::endl;
+	std::cout << "\033[1;32mft_map.empty() = \033[0m" << ft_map.empty() <<  std::endl;
+
+	std::cout << std::endl;
+	std::cout << "----------------------------------------------" << std::endl;
+}
+
+void test_31(void)
+{
+	std::cout << "\033[1;31mTest 31: Test Map Range Constructor\033[0m\n"<< std::endl;
+	std::cout << "\033[1;32mstd::vector<ft::pair<char, int>> v; \033[0m\n";
+	std::cout << "\033[1;32mv.push_back(ft::pair<char, int>('a', 2)); \033[0m\n";
+	std::cout << "\033[1;32mv.push_back(ft::pair<char, int>('b', 4)); \033[0m\n";
+	std::cout << "\033[1;32mv.push_back(ft::pair<char, int>('c', 6)); \033[0m\n";
+	std::vector<ft::pair<char, int> > v;
+	v.push_back(ft::pair<char, int>('a', 2));
+  	v.push_back(ft::pair<char, int>('b', 4));
+  	v.push_back(ft::pair<char, int>('c', 6));
+	  
+	std::cout << "\033[1;32mft::map<char, int> ft_map(v.begin(), v.end()); \033[0m\n";
+	ft::map<char, int> ft_map(v.begin(), v.end());
+
+	std::cout << "\033[1;32mft_map.size() = \033[0m" << ft_map.size() <<  std::endl;
+	std::cout << "\033[1;32mft_map['a'] = \033[0m" << ft_map['a'] <<  std::endl;	
+	std::cout << "\033[1;32mft_map['b'] = \033[0m" << ft_map['b'] <<  std::endl;		
+	std::cout << "\033[1;32mft_map['c'] = \033[0m" << ft_map['c'] <<  std::endl;
+
+	std::cout << std::endl;
+	std::cout << "----------------------------------------------" << std::endl;
+}
+
+void test_32(void)
+{
+	std::cout << "\033[1;31mTest 32: Test Map Copy Constructor\033[0m\n"<< std::endl;
+	std::cout << "\033[1;32mft::map<char, int> MapChar; \033[0m\n";
+	std::cout << "\033[1;32mMapChar['a'] = 1; \033[0m\n";
+	std::cout << "\033[1;32mMapChar['b'] = 2; \033[0m\n";
+	std::cout << "\033[1;32mMapChar['c'] = 3; \033[0m\n";
+	std::cout << "\033[1;32mMapChar['d'] = 4; \033[0m\n";
+	std::cout << "\033[1;32mMapChar['e'] = 5; \033[0m\n";
+	std::cout << "\033[1;32mft::map<char, int> mymap(MapChar); \033[0m\n";
+	
+	ft::map<char, int> MapChar;
+	MapChar['a'] = 1;
+    MapChar['b'] = 2;
+    MapChar['c'] = 3;
+    MapChar['d'] = 4;
+    MapChar['e'] = 5;
+	
+	ft::map<char, int> mymap(MapChar);
+
+	std::cout << std::endl;
+	std::cout << "----------------------------------------------" << std::endl;
+}
+
+void test_(void)
+{
+	
 }
 
 int main(void)
 {
 	test_0();
-	// test_1();
+	test_1();
 	test_2();
 	test_3();
 	test_4();
@@ -1391,5 +1460,8 @@ int main(void)
 	test_27();
 	test_28();
 	test_29();
+	test_30();
+	test_31();
+	test_32();
 	return (0);
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   RBTree.hpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rdutenke <rdutenke@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: coder <coder@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/30 23:11:09 by rdutenke          #+#    #+#             */
-/*   Updated: 2022/05/31 03:44:06 by rdutenke         ###   ########.fr       */
+/*   Updated: 2022/06/04 17:55:23 by coder            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,11 +26,20 @@ namespace ft {
 	{
 		public:
 			typedef typename SUPER::iterator iterator;
+			typedef typename SUPER::const_iterator const_iterator;
 			typedef typename SUPER::size_type size_type;
 			typedef typename SUPER::Node Node;
 			typedef typename SUPER::NodePtr NodePtr;
 			typedef typename SUPER::ConstNodePtr ConstNodePtr;
-			
+			typedef typename SUPER::reference reference;
+			typedef typename SUPER::const_reference const_reference;
+			typedef typename SUPER::pointer pointer;
+			typedef typename SUPER::const_pointer const_pointer;
+			typedef typename SUPER::difference_type difference_type;
+			typedef typename SUPER::key_type key_type;
+			typedef typename SUPER::key_compare key_compare;
+
+		
 		protected:
 			enum Color {RED, BLACK};
 			struct RBNode : public Node
@@ -457,9 +466,9 @@ namespace ft {
 			return NULL;
 		}		
 		r->left = copy(x->left);
-		setParent(r->left, r);
+		SUPER::setParent(r->left, r);
 		r->right = copy(x->right);
-		setParent(r->right, r);
+		SUPER::setParent(r->right, r);
 		return r;
 	}
 
@@ -472,8 +481,8 @@ namespace ft {
 		}
 		this->root = copy(x.root);
 		this->root->parent = this->dummy;
-		this->dummy->left = leftMost(this->root);
-		this->dummy->right = rightMost(this->root);
+		this->dummy->left = SUPER::leftMost(this->root);
+		this->dummy->right = SUPER::rightMost(this->root);
 		this->sz = x.size();
 	}
 
@@ -548,11 +557,15 @@ namespace ft {
 		}
 		if (p->left!= NULL && p->right!= NULL)
 		{
-			changeNodes(p, rightMost(p->left));                 
+			changeNodes(p, SUPER::rightMost(p->left));                 
 		}
 		eraseInLeaf(getRefNode(p));
 		--this->sz;
 	}
+
+
+
+	
 	#undef SUPER
 };
 

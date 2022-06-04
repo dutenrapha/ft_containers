@@ -6,7 +6,7 @@
 /*   By: rdutenke <rdutenke@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/30 18:14:02 by rdutenke          #+#    #+#             */
-/*   Updated: 2022/05/30 22:43:02 by rdutenke         ###   ########.fr       */
+/*   Updated: 2022/05/31 14:48:11 by rdutenke         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,12 @@ namespace ft {
 			typedef typename SUPER::const_iterator const_iterator;
 			typedef typename SUPER::size_type size_type;
 			typedef typename SUPER::NodePtr NodePtr;
+			typedef typename SUPER::reference reference;
+			typedef typename SUPER::const_reference const_reference;
+			typedef typename SUPER::pointer pointer;
+			typedef typename SUPER::const_pointer const_pointer;
+			typedef typename SUPER::difference_type difference_type;
+			
 			typedef K   key_type;
 			typedef Cmp key_compare;
 
@@ -94,7 +100,6 @@ namespace ft {
 			SUPER::dummy->left = SUPER::dummy->right;
 			this->root = SUPER::dummy->left;
 			r = this->root;
-			// r = this->root = SUPER::dummy->left = SUPER::dummy->right = this->newNode(SUPER::dummy, e);
 		}
 		else
 		{
