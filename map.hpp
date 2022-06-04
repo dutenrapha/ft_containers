@@ -6,7 +6,7 @@
 /*   By: coder <coder@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/11 17:02:32 by rdutenke          #+#    #+#             */
-/*   Updated: 2022/06/04 17:53:30 by coder            ###   ########.fr       */
+/*   Updated: 2022/06/04 21:12:09 by coder            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,6 +72,8 @@ namespace ft
 			typedef typename SUPER::const_pointer const_pointer;
 			typedef typename SUPER::iterator 	iterator;
 			typedef typename SUPER::const_iterator const_iterator;
+			typedef typename SUPER::reverse_iterator reverse_iterator;
+  			typedef  typename SUPER::const_reverse_iterator const_reverse_iterator;
 			typedef typename SUPER::difference_type difference_type;
 			typedef typename SUPER::size_type size_type;
 			

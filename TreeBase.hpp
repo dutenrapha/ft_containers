@@ -15,6 +15,8 @@
 #define TREE_BASE_HPP
 
 #include "iterator_traits.hpp"
+#include "reverse_iterator.hpp"
+
 #include "pair.hpp"
 #include <stdlib.h>
 
@@ -51,7 +53,9 @@ namespace ft {
 
 			typedef IT<NodePtr, pointer, reference> iterator;
 			typedef IT<ConstNodePtr, const_pointer, const_reference> const_iterator;
-			
+			typedef ft::reverse_iterator<iterator> reverse_iterator;
+  			typedef ft::reverse_iterator<const_iterator> const_reverse_iterator;
+
 		protected:
 			Alloc constr;
 			ANode alloc;
@@ -156,6 +160,16 @@ namespace ft {
 			const_iterator end(void)	const
 			{
 				return dummy;
+			}
+
+			reverse_iterator rbegin()
+			{
+				return reverse_iterator(end());
+			}
+
+			const_reverse_iterator rbegin() const
+			{
+				return const_reverse_iterator(end());
 			}
 
 			//Access to dimensions

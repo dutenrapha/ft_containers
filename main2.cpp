@@ -6,7 +6,7 @@
 /*   By: rdutenke <rdutenke@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/27 21:46:32 by rdutenke          #+#    #+#             */
-/*   Updated: 2022/05/31 03:44:31 by rdutenke         ###   ########.fr       */
+/*   Updated: 2022/05/31 15:51:06 by rdutenke         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,11 +76,21 @@ int main(void)
 	typedef ft::map<std::string, unsigned> Table;
 
 	Table table;
-	std::string word;
+	std::string colour[] = {"Blue", 
+							"Red",
+							"Red",
+							"Yellow",
+							"Blue", 
+							"Red",
+							"Red",
+							"Yellow",
+							"Red",
+							"Yellow",
+							"Blue"};
 	
-	while(std::cin >> word && word != ".")
+	for (int i=0; i<11;++i)
 	{
-		++table[word];	
+		++table[colour[i]];	
 	}
 	std::cout << "Values" << std::endl;
 	for (Table::iterator it = table.begin(); it != table.end(); ++it)

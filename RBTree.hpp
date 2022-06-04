@@ -6,7 +6,7 @@
 /*   By: coder <coder@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/30 23:11:09 by rdutenke          #+#    #+#             */
-/*   Updated: 2022/06/04 18:48:46 by coder            ###   ########.fr       */
+/*   Updated: 2022/06/04 21:12:13 by coder            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,8 @@ namespace ft {
 		public:
 			typedef typename SUPER::iterator iterator;
 			typedef typename SUPER::const_iterator const_iterator;
+			typedef typename SUPER::reverse_iterator reverse_iterator;
+  			typedef typename SUPER::const_reverse_iterator const_reverse_iterator;
 			typedef typename SUPER::size_type size_type;
 			typedef typename SUPER::Node Node;
 			typedef typename SUPER::NodePtr NodePtr;
@@ -35,6 +37,7 @@ namespace ft {
 			typedef typename SUPER::const_reference const_reference;
 			typedef typename SUPER::pointer pointer;
 			typedef typename SUPER::const_pointer const_pointer;
+		
 			typedef typename SUPER::difference_type difference_type;
 			typedef typename SUPER::key_type key_type;
 			typedef typename SUPER::key_compare key_compare;

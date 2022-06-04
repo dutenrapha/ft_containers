@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Tree.hpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rdutenke <rdutenke@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: coder <coder@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/30 18:14:02 by rdutenke          #+#    #+#             */
-/*   Updated: 2022/05/31 14:48:11 by rdutenke         ###   ########.fr       */
+/*   Updated: 2022/06/04 21:12:19 by coder            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,8 @@ namespace ft {
 		public:
 			typedef typename SUPER::iterator iterator;
 			typedef typename SUPER::const_iterator const_iterator;
+			typedef typename SUPER::reverse_iterator reverse_iterator;
+  			typedef typename SUPER::const_reverse_iterator const_reverse_iterator;
 			typedef typename SUPER::size_type size_type;
 			typedef typename SUPER::NodePtr NodePtr;
 			typedef typename SUPER::reference reference;
