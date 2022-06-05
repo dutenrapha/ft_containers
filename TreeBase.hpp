@@ -121,6 +121,11 @@ namespace ft {
 			{
 				return p;
 			}
+
+			const_iterator getConstIterator(NodePtr p) const
+			{
+				return p;
+			}
 			
 			NodePtr getNode(iterator  i)
 			{
@@ -164,12 +169,22 @@ namespace ft {
 
 			reverse_iterator rbegin()
 			{
-				return reverse_iterator(end());
+				return reverse_iterator(--this->end());
 			}
 
 			const_reverse_iterator rbegin() const
 			{
-				return const_reverse_iterator(end());
+				return const_reverse_iterator(--this->end());
+			}
+
+			reverse_iterator rend()
+			{
+				return reverse_iterator(this->begin());
+			}
+
+			const_reverse_iterator rend() const
+			{
+				return const_reverse_iterator(this->begin());
 			}
 
 			//Access to dimensions
@@ -614,7 +629,7 @@ namespace ft {
 		
 		// IT(NodePtr p):current(p) {} 
 		public:
-			// IT() {}
+			IT() {}
 			NodePtr current; 
 			IT(NodePtr p):current(p) {} 
 			
@@ -707,10 +722,6 @@ namespace ft {
 			}
 		}
 	}
-
-
-
-
 };
 
 #endif

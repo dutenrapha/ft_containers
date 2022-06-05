@@ -6,7 +6,7 @@
 /*   By: coder <coder@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/11 17:02:32 by rdutenke          #+#    #+#             */
-/*   Updated: 2022/06/04 21:12:09 by coder            ###   ########.fr       */
+/*   Updated: 2022/06/05 16:30:55 by coder            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,15 +96,122 @@ namespace ft
 			{
 				return SUPER::insertUni(value);
 			}
+
+			iterator insert(iterator hint, const value_type &val)
+			{
+    			return SUPER::insertUni(hint, val);
+  			}
+
+			void insert(iterator first, iterator last)
+			{
+    			return SUPER::insertUni(first, last);
+  			}
 		
 			T &operator[](const K &key)
 			{
 				return insert(value_type(key, T())).first->second;
 			}
 
-			
-			
-	};	
+			size_type max_size(void) const
+			{
+				return (this->allocRB.max_size());
+			}
+
+			value_compare value_comp() const
+			{
+				return value_compare(SUPER::key_comp());
+			}
+
+			size_type count(const key_type &key) const
+			{
+				if (this->find(key) != this->end())
+				{
+					return 1;
+				}
+				else
+				{
+					return 0;
+				}
+  			}
+
+			iterator lower_bound(const key_type &key)
+			{
+				 return iterator(SUPER::_lower_bound(key));
+			}
+
+			const_iterator lower_bound(const key_type &key) const
+			{
+				return const_iterator(SUPER::_lower_bound(key));
+			}
+
+			iterator upper_bound(const key_type &key)
+			{
+				 return iterator(SUPER::_upper_bound(key));
+			}
+
+			const_iterator upper_bound(const key_type &key) const
+			{
+				return const_iterator(SUPER::_upper_bound(key));
+			}
+
+			ft::pair<iterator, iterator> equal_range(const key_type &k)
+			{
+   				return ft::make_pair(this->lower_bound(k), this->upper_bound(k));
+  			}
+
+			ft::pair<const_iterator, const_iterator> equal_range(const key_type &k) const 
+			{
+				return ft::make_pair(this->lower_bound(k), this->upper_bound(k));
+			}
+
+			allocator_type get_allocator() const
+			{
+				return allocator_type(SUPER::alloc);
+			}
+
+	};
+
+	template <class K, class T, class Cmp, class Alloc>
+	bool operator==(const ft::map<K, T, Cmp, Alloc> &lhs, const ft::map<K, T, Cmp, Alloc> &rhs)
+	{
+  		return lhs.size() == rhs.size() && ft::equal(lhs.begin(), lhs.end(), rhs.begin());
+	}
+
+	template <class K, class T, class Cmp, class Alloc>
+	bool operator!=(const map<K, T, Cmp, Alloc> &lhs, const map<K, T, Cmp, Alloc> &rhs)
+	{
+  		return !(lhs == rhs);
+	}
+
+	template <class K, class T, class Cmp, class Alloc>
+	bool operator<(const map<K, T, Cmp, Alloc> &lhs, const map<K, T, Cmp, Alloc> &rhs)
+	{
+  		return ft::lexicographical_compare(lhs.begin(), lhs.end(), rhs.begin(), rhs.end());
+	}
+
+	template <class K, class T, class Cmp, class Alloc>
+	bool operator>(const map<K, T, Cmp, Alloc> &lhs, const map<K, T, Cmp, Alloc> &rhs)
+	{
+  		return rhs < lhs;
+	}
+
+	template <class K, class T, class Cmp, class Alloc>
+	bool operator<=(const map<K, T, Cmp, Alloc> &lhs, const map<K, T, Cmp, Alloc> &rhs)
+	{
+  		return !(rhs < lhs);
+	}
+
+	template <class K, class T, class Cmp, class Alloc>
+	bool operator>=(const map<K, T, Cmp, Alloc> &lhs, const map<K, T, Cmp, Alloc> &rhs)
+	{
+  		return !(lhs < rhs);
+	}
+
+	template <class K, class T, class Cmp, class Alloc>
+	void swap(map<K, T, Cmp, Alloc> &lhs, map<K, T, Cmp, Alloc> &rhs)
+	{
+		lhs.swap(rhs);
+	}
 
 	#undef SUPER
 }

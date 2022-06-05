@@ -6,15 +6,16 @@
 /*   By: coder <coder@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/22 00:27:56 by rdutenke          #+#    #+#             */
-/*   Updated: 2022/06/04 20:23:10 by coder            ###   ########.fr       */
+/*   Updated: 2022/06/05 17:04:54 by coder            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <vector>
 #include "vector.hpp"
-#include <map>
 #include "map.hpp"
 #include "pair.hpp"
+#include <map>
+#include <limits>
 
 void	test_0(void)
 {
@@ -1552,12 +1553,959 @@ void test_36(void)
 	ft::map<char, int> mymap(MapChar);
 
 	std::cout << "\033[1;32mmymap.rbegin()->first \033[0m" << mymap.rbegin()->first <<  std::endl;		
-	std::cout << "\033[1;32mmymap.rbegin()->second \033[0m" << mymap.rbegin()->second <<  std::endl;	
+	std::cout << "\033[1;32mmymap.rbegin()->second \033[0m" << mymap.rbegin()->second <<  std::endl;
+
+	std::cout << "\033[1;32mft::map<char, int>::reverse_iterator it = mymap.rbegin(); \033[0m\n";
+	ft::map<char, int>::reverse_iterator it = mymap.rbegin();
+	
+	char c = 'e';
+	for (; it != mymap.rend(); ++it) {
+		std::cout << "\033[1;32mExpected: \033[0m" << c << "\033[1;32m, Realized it->first: \033[0m" << it->first << std::endl;
+		std::cout << "\033[1;32mExpected MapChar["<< c <<"]: \033[0m" << MapChar[c] << "\033[1;32m, Realized it->second: \033[0m" << it->second << std::endl;
+		c--;
+	}
+
+	std::cout << std::endl;
+	std::cout << "----------------------------------------------" << std::endl;
 }
 
-void test_(void)
+void test_37(void)
 {
+	std::cout << "\033[1;31mTest 37: Test Map Rend\033[0m\n"<< std::endl;
+	std::cout << "\033[1;32mft::map<char, int> MapChar; \033[0m\n";
+	std::cout << "\033[1;32mMapChar['a'] = 1; \033[0m\n";
+	std::cout << "\033[1;32mMapChar['b'] = 2; \033[0m\n";
+	std::cout << "\033[1;32mMapChar['c'] = 3; \033[0m\n";
+	std::cout << "\033[1;32mMapChar['d'] = 4; \033[0m\n";
+	std::cout << "\033[1;32mMapChar['e'] = 5; \033[0m\n";
 	
+	ft::map<char, int> MapChar;
+	MapChar['a'] = 1;
+    MapChar['b'] = 2;
+    MapChar['c'] = 3;
+    MapChar['d'] = 4;
+    MapChar['e'] = 5;
+
+	std::cout << "\033[1;32mft::map<char, int> mymap(MapChar); \033[0m\n";
+	ft::map<char, int> mymap(MapChar);
+
+	std::cout << "\033[1;32mft::map<char, int>::reverse_iterator it = mymap.rend(); \033[0m\n";
+	ft::map<char, int>::reverse_iterator it = mymap.rend();
+
+	std::cout << "\033[1;32mit->first \033[0m" << it->first <<  std::endl;		
+	std::cout << "\033[1;32mit->second \033[0m" << it->second <<  std::endl;	
+	
+	char c = 'a';
+	for (; it != mymap.rbegin(); --it) {
+		std::cout << "\033[1;32mExpected: \033[0m" << c << "\033[1;32m, Realized it->first: \033[0m" << it->first << std::endl;
+		std::cout << "\033[1;32mExpected MapChar["<< c <<"]: \033[0m" << MapChar[c] << "\033[1;32m, Realized it->second: \033[0m" << it->second << std::endl;
+		c++;
+	}
+
+	std::cout << std::endl;
+	std::cout << "----------------------------------------------" << std::endl;
+}
+
+
+void test_38(void) 
+{
+	std::cout << "\033[1;31mTest 38: Test Map Size\033[0m\n"<< std::endl;
+	std::cout << "\033[1;32mft::map<char, int> mymap; \033[0m\n";
+	ft::map<char, int> mymap;
+	
+	std::cout << "\033[1;32mmymap['a'] = 2; \033[0m\n";
+	std::cout << "\033[1;32mmymap['b'] = 4; \033[0m\n";
+	std::cout << "\033[1;32mmymap['c'] = 6; \033[0m\n";
+	mymap['a'] = 2;
+	mymap['b'] = 4;
+	mymap['c'] = 6;
+	std::cout << "\033[1;32mmymap.size() = \033[0m" << mymap.size() <<  std::endl;
+	std::cout << "\033[1;32mmymap['d'] = 8; \033[0m\n";
+	mymap['d'] = 8;
+	std::cout << "\033[1;32mmymap.size() = \033[0m" << mymap.size() <<  std::endl;
+	std::cout << "\033[1;32mmymap.erase('d'); \033[0m\n";
+	mymap.erase('d');
+	std::cout << "\033[1;32mmymap.size() = \033[0m" << mymap.size() <<  std::endl;
+	
+	std::cout << std::endl;
+	std::cout << "----------------------------------------------" << std::endl;
+}
+
+void test_39(void) 
+{
+	std::cout << "\033[1;31mTest 39: Test Map Empty\033[0m\n"<< std::endl;
+	std::cout << "\033[1;32mft::map<char, int> mymap; \033[0m\n";
+	ft::map<char, int> mymap;
+	
+	std::cout << "\033[1;32mmymap.empty() = \033[0m" << mymap.empty() <<  std::endl;
+	
+	std::cout << "\033[1;32mmymap['a'] = 2; \033[0m\n";
+	mymap['a'] = 2;
+	std::cout << "\033[1;32mmymap.empty() = \033[0m" << mymap.empty() <<  std::endl;
+	
+	std::cout << "\033[1;32mmymap.erase('a'); \033[0m\n";
+	mymap.erase('a');
+	std::cout << "\033[1;32mmymap.empty() = \033[0m" << mymap.empty() <<  std::endl;
+	std::cout << std::endl;
+	std::cout << "----------------------------------------------" << std::endl;
+}
+
+
+void test_40(void) 
+{
+	std::cout << "\033[1;31mTest 39: Test Map MaxSize\033[0m\n"<< std::endl;
+	std::cout << "\033[1;32mft::map<char, int> mymap; \033[0m\n";
+	ft::map<char, int> mymap;
+	std::cout << "\033[1;32mstd::map<char, int> stdmap; \033[0m\n";
+	std::map<char, int> stdmap;
+	std::cout << "\033[1;32mmymap.max_size():  \033[0m" << mymap.max_size() << std::endl;
+	std::cout << "\033[1;32mstdmap.max_size(): \033[0m" << stdmap.max_size() << std::endl;	
+	std::cout << std::endl;
+	std::cout << "----------------------------------------------" << std::endl;
+}
+
+void test_41(void) 
+{
+	std::cout << "\033[1;31mTest 41: Test Map Element Access\033[0m\n"<< std::endl;
+	std::cout << "\033[1;32mft::map<char, int> MapChar; \033[0m\n";
+	std::cout << "\033[1;32mMapChar['a'] = 1; \033[0m\n";
+	std::cout << "\033[1;32mMapChar['b'] = 2; \033[0m\n";
+	std::cout << "\033[1;32mMapChar['c'] = 3; \033[0m\n";
+	
+	ft::map<char, int> MapChar;
+	MapChar['a'] = 1;
+    MapChar['b'] = 2;
+    MapChar['c'] = 3;
+
+	std::cout << "\033[1;32mMapChar['a']: \033[0m" << MapChar['a'] << std::endl;
+	std::cout << "\033[1;32mMapChar['b']: \033[0m" << MapChar['b'] << std::endl;
+	std::cout << "\033[1;32mMapChar['c']: \033[0m" << MapChar['c'] << std::endl;
+	std::cout << std::endl;
+	std::cout << "----------------------------------------------" << std::endl;
+}
+
+void test_42(void) 
+{
+	std::cout << "\033[1;31mTest 42: Test Map Clear\033[0m\n"<< std::endl;
+	std::cout << "\033[1;32mft::map<char, int> MapChar; \033[0m\n";
+	std::cout << "\033[1;32mMapChar['a'] = 1; \033[0m\n";
+	std::cout << "\033[1;32mMapChar['b'] = 2; \033[0m\n";
+	std::cout << "\033[1;32mMapChar['c'] = 3; \033[0m\n";
+	
+	ft::map<char, int> MapChar;
+	MapChar['a'] = 1;
+    MapChar['b'] = 2;
+    MapChar['c'] = 3;
+	
+	std::cout << "\033[1;32mMapChar.size():  \033[0m" << MapChar.size() << std::endl;
+	std::cout << "\033[1;32mMapChar.clear(); \033[0m\n";
+	MapChar.clear();
+	std::cout << "\033[1;32mMapChar.size():  \033[0m" << MapChar.size() << std::endl;
+
+	std::cout << std::endl;
+	std::cout << "----------------------------------------------" << std::endl;
+}
+
+void test_43(void) 
+{
+	std::cout << "\033[1;31mTest 43: Test Map Insert\033[0m\n"<< std::endl;
+	std::cout << "\033[1;32mft::map<char, int> mymap; \033[0m\n";
+	std::cout << "\033[1;32mmymap['a'] = 1; \033[0m\n";
+	std::cout << "\033[1;32mmymap['b'] = 2; \033[0m\n";
+	std::cout << "\033[1;32mmymap['c'] = 3; \033[0m\n";
+	
+	ft::map<char, int> mymap;
+	mymap['a'] = 1;
+    mymap['b'] = 2;
+    mymap['c'] = 3;
+
+	std::cout << "\033[1;32mmymap.insert(ft::pair<char, int>('d', 8));" << std::endl;
+	mymap.insert(ft::pair<char, int>('d', 8));
+	std::cout << "\033[1;32mmymap.size():  \033[0m" << mymap.size() << std::endl;
+	std::cout << "\033[1;32mmymap['d']:  \033[0m" << mymap['d'] << std::endl;
+
+	std::cout << "\033[1;32mmymap.insert(ft::pair<char, int>('e', 10));" << std::endl;
+	mymap.insert(ft::pair<char, int>('e', 10));
+	std::cout << "\033[1;32mmymap.size():  \033[0m" << mymap.size() << std::endl;
+	std::cout << "\033[1;32mmymap['e']:  \033[0m" << mymap['e'] << std::endl;
+
+
+	std::cout << "\033[1;32mmymap.insert(mymap.begin(), ft::pair<char, int>('f', 12));" << std::endl;
+	mymap.insert(mymap.begin(), ft::pair<char, int>('f', 12));
+	std::cout << "\033[1;32mmymap.size():  \033[0m" << mymap.size() << std::endl;
+	std::cout << "\033[1;32mmymap['f']:  \033[0m" << mymap['f'] << std::endl;
+
+	std::cout << "\033[1;32mft::map<char, int> MapChar;" << std::endl;
+	std::cout << "\033[1;32mMapChar['g'] = 14;" << std::endl;
+	std::cout << "\033[1;32mMapChar['h'] = 16;" << std::endl;
+	std::cout << "\033[1;32mMapChar['i'] = 18;" << std::endl;
+	ft::map<char, int> MapChar;
+	MapChar['g'] = 14;
+    MapChar['h'] = 16;
+    MapChar['i'] = 18;
+
+	std::cout << "\033[1;32mft::map<char, int>::iterator begin = MapChar.begin(); \033[0m\n";
+	ft::map<char, int>::iterator begin = MapChar.begin();
+
+	std::cout << "\033[1;32mft::map<char, int>::iterator end = MapChar.end(); \033[0m\n";
+	ft::map<char, int>::iterator end = MapChar.end();
+
+	std::cout << "\033[1;32mmymap.insert(begin, end); \033[0m\n";
+
+	mymap.insert(begin, end);
+	std::cout << "\033[1;32mmymap.size():  \033[0m" << mymap.size() << std::endl;
+	std::cout << "\033[1;32mmymap['g']:  \033[0m" << mymap['g'] << std::endl;
+	std::cout << "\033[1;32mmymap['h']:  \033[0m" << mymap['h'] << std::endl;
+	std::cout << "\033[1;32mmymap['i']:  \033[0m" << mymap['i'] << std::endl;
+	
+	std::cout << std::endl;
+	std::cout << "----------------------------------------------" << std::endl;
+}
+
+void test_44(void) 
+{
+	std::cout << "\033[1;31mTest 44: Test Map Erase\033[0m\n"<< std::endl;
+	std::cout << "\033[1;32mft::map<char, int> mymap; \033[0m\n";
+	std::cout << "\033[1;32mmymap['a'] = 1; \033[0m\n";
+	std::cout << "\033[1;32mmymap['b'] = 2; \033[0m\n";
+	std::cout << "\033[1;32mmymap['c'] = 3; \033[0m\n";
+	std::cout << "\033[1;32mmymap['d'] = 8; \033[0m\n";
+	std::cout << "\033[1;32mmymap['e'] = 10; \033[0m\n";
+	
+	ft::map<char, int> mymap;
+	mymap['a'] = 1;
+    mymap['b'] = 2;
+    mymap['c'] = 3;
+	mymap['d'] = 8;
+  	mymap['e'] = 10;
+
+	std::cout << "\033[1;32mmymap.size():  \033[0m" << mymap.size() << std::endl;
+
+	std::cout << "\033[1;32mmymap.erase('e'); \033[0m\n";
+	mymap.erase('e');
+	std::cout << "\033[1;32mmymap.size():  \033[0m" << mymap.size() << std::endl;
+	std::cout << "\033[1;32mmymap['a']:  \033[0m" << mymap['a'] << std::endl;
+	std::cout << "\033[1;32mmymap['b']:  \033[0m" << mymap['b'] << std::endl;
+	std::cout << "\033[1;32mmymap['c']:  \033[0m" << mymap['c'] << std::endl;
+	std::cout << "\033[1;32mmymap['d']:  \033[0m" << mymap['d'] << std::endl;
+
+	std::cout << "\033[1;32mmymap.erase(mymap.begin()); \033[0m\n";
+	mymap.erase(mymap.begin());
+	std::cout << "\033[1;32mmymap.size():  \033[0m" << mymap.size() << std::endl;
+	std::cout << "\033[1;32mmymap['b']:  \033[0m" << mymap['b'] << std::endl;
+	std::cout << "\033[1;32mmymap['c']:  \033[0m" << mymap['c'] << std::endl;
+	std::cout << "\033[1;32mmymap['d']:  \033[0m" << mymap['d'] << std::endl;
+
+	std::cout << std::endl;
+	std::cout << "----------------------------------------------" << std::endl;
+}
+
+void test_45(void) 
+{
+	std::cout << "\033[1;31mTest 45: Test Erase Iterator\033[0m\n"<< std::endl;
+	std::cout << "\033[1;32mft::map<int, int> m2; \033[0m\n";
+	std::cout << "\033[1;32mm2[1] = 2; \033[0m\n";
+	std::cout << "\033[1;32mm2[2] = 4; \033[0m\n";
+	std::cout << "\033[1;32mm2[3] = 6; \033[0m\n";
+	std::cout << "\033[1;32mm2[4] = 8; \033[0m\n";
+	std::cout << "\033[1;32mm2[5] = 10; \033[0m\n";
+	std::cout << "\033[1;32mm2[6] = 12; \033[0m\n";
+	std::cout << "\033[1;32mm2[7] = 13; \033[0m\n";
+	std::cout << "\033[1;32mm2[8] = 14; \033[0m\n";
+
+	ft::map<int, int> m2;
+	m2[1] = 2;
+	m2[2] = 4;
+	m2[3] = 6;
+	m2[4] = 8;
+	m2[5] = 10;
+	m2[6] = 12;
+	m2[7] = 14;
+	m2[8] = 16;
+
+	std::cout << "\033[1;32mft::map<int, int>::iterator it = m2.begin(); \033[0m\n";
+	std::cout << "\033[1;32mft::map<int, int>::iterator ite = m2.end(); \033[0m\n";
+	std::cout << "\033[1;32mit++; \033[0m\n";
+	ft::map<int, int>::iterator it = m2.begin();
+	ft::map<int, int>::iterator ite = m2.end();
+	it++;
+
+	std::cout << "\033[1;32mm2.erase(it, ite); \033[0m\n";
+  	m2.erase(it, ite);
+
+	std::cout << "\033[1;32mm2.size():  \033[0m" << m2.size() << std::endl;
+	std::cout << "\033[1;32mm2[1]:  \033[0m" << m2[1] << std::endl;
+
+	std::cout << std::endl;
+	std::cout << "----------------------------------------------" << std::endl;
+}
+
+void test_46(void) 
+{
+	std::cout << "\033[1;31mTest 46: Test Clear\033[0m\n"<< std::endl;
+	std::cout << "\033[1;32mft::map<char, int> mymap; \033[0m\n";
+	std::cout << "\033[1;32mmymap['a'] = 1; \033[0m\n";
+	std::cout << "\033[1;32mmymap['b'] = 2; \033[0m\n";
+	std::cout << "\033[1;32mmymap['c'] = 3; \033[0m\n";
+	std::cout << "\033[1;32mmymap['d'] = 8; \033[0m\n";
+	std::cout << "\033[1;32mmymap['e'] = 10; \033[0m\n";
+	
+	ft::map<char, int> mymap;
+	mymap['a'] = 1;
+    mymap['b'] = 2;
+    mymap['c'] = 3;
+	mymap['d'] = 8;
+  	mymap['e'] = 10;
+
+	std::cout << "\033[1;32mmymap.size():  \033[0m" << mymap.size() << std::endl;
+	std::cout << "\033[1;32mmymap.clear(); \033[0m\n";
+ 	mymap.clear();
+	std::cout << "\033[1;32mmymap.size():  \033[0m" << mymap.size() << std::endl;
+
+
+	std::cout << std::endl;
+	std::cout << "----------------------------------------------" << std::endl;
+}
+
+void test_47(void) 
+{
+	std::cout << "\033[1;31mTest 47: Test Map Swap\033[0m\n"<< std::endl;
+	std::cout << "\033[1;32mft::map<char, int> mymap1; \033[0m\n";
+	std::cout << "\033[1;32mmymap1['a'] = 1; \033[0m\n";
+	std::cout << "\033[1;32mmymap1['b'] = 2; \033[0m\n";
+	std::cout << "\033[1;32mmymap1['c'] = 3; \033[0m\n";
+	std::cout << "\033[1;32mmymap1['d'] = 8; \033[0m\n";
+	std::cout << "\033[1;32mmymap1['e'] = 10; \033[0m\n";
+
+	ft::map<char, int> mymap1;
+	mymap1['a'] = 1;
+	mymap1['b'] = 2;
+	mymap1['c'] = 3;
+	mymap1['d'] = 8;
+	mymap1['e'] = 10;
+
+	std::cout << "\033[1;32mft::map<char, int> mymap2; \033[0m\n";
+	std::cout << "\033[1;32mmymap2['f'] = 12; \033[0m\n";
+	std::cout << "\033[1;32mmymap2['g'] = 14; \033[0m\n";
+	std::cout << "\033[1;32mmymap2['h'] = 16; \033[0m\n";
+	std::cout << "\033[1;32mmymap2['i'] = 18; \033[0m\n";
+	std::cout << "\033[1;32mmymap2['j'] = 20; \033[0m\n";
+
+	ft::map<char, int> mymap2;
+	mymap2['f'] = 12;
+	mymap2['g'] = 14;
+	mymap2['h'] = 16;
+	mymap2['i'] = 18;
+  	mymap2['j'] = 20;
+
+	std::cout << "\033[1;32mmymap1.swap(mymap2);  \033[0m" << std::endl;
+	mymap1.swap(mymap2);
+
+	std::cout << "\033[1;32mmymap1.size():  \033[0m" << mymap1.size() << std::endl;
+	std::cout << "\033[1;32mmymap1['f']:  \033[0m" << mymap1['f'] << std::endl;
+	std::cout << "\033[1;32mmymap1['g']:  \033[0m" << mymap1['g'] << std::endl;
+	std::cout << "\033[1;32mmymap1['h']:  \033[0m" << mymap1['h'] << std::endl;
+	std::cout << "\033[1;32mmymap1['i']:  \033[0m" << mymap1['i'] << std::endl;
+	std::cout << "\033[1;32mmymap1['j']:  \033[0m" << mymap1['j'] << std::endl;
+
+	std::cout << "\033[1;32mmymap2.size():  \033[0m" << mymap2.size() << std::endl;
+	std::cout << "\033[1;32mmymap2['a']:  \033[0m" << mymap2['a'] << std::endl;
+	std::cout << "\033[1;32mmymap2['b']:  \033[0m" << mymap2['b'] << std::endl;
+	std::cout << "\033[1;32mmymap2['c']:  \033[0m" << mymap2['c'] << std::endl;
+	std::cout << "\033[1;32mmymap2['d']:  \033[0m" << mymap2['d'] << std::endl;
+	std::cout << "\033[1;32mmymap2['e']:  \033[0m" << mymap2['e'] << std::endl;
+
+	std::cout << std::endl;
+	std::cout << "----------------------------------------------" << std::endl;
+}
+
+void test_48(void) 
+{
+	std::cout << "\033[1;31mTest 48: Test Key Comp\033[0m\n"<< std::endl;
+	std::cout << "\033[1;32mft::map<char, int> mymap1; \033[0m\n";
+	std::cout << "\033[1;32mmymap1['a'] = 1; \033[0m\n";
+	std::cout << "\033[1;32mmymap1['b'] = 2; \033[0m\n";
+	std::cout << "\033[1;32mmymap1['c'] = 3; \033[0m\n";
+	std::cout << "\033[1;32mmymap1['d'] = 8; \033[0m\n";
+	std::cout << "\033[1;32mmymap1['e'] = 10; \033[0m\n";
+
+	ft::map<char, int> mymap1;
+	mymap1['a'] = 1;
+	mymap1['b'] = 2;
+	mymap1['c'] = 3;
+	mymap1['d'] = 8;
+	mymap1['e'] = 10;
+
+	std::cout << "\033[1;32mft::map<char, int> mymap2; \033[0m\n";
+	std::cout << "\033[1;32mmymap2['f'] = 12; \033[0m\n";
+	std::cout << "\033[1;32mmymap2['g'] = 14; \033[0m\n";
+	std::cout << "\033[1;32mmymap2['h'] = 16; \033[0m\n";
+	std::cout << "\033[1;32mmymap2['i'] = 18; \033[0m\n";
+	std::cout << "\033[1;32mmymap2['j'] = 20; \033[0m\n";
+
+	ft::map<char, int> mymap2;
+	mymap2['f'] = 12;
+	mymap2['g'] = 14;
+	mymap2['h'] = 16;
+	mymap2['i'] = 18;
+  	mymap2['j'] = 20;
+
+	std::cout << "\033[1;32mft::map<char, int>::key_compare kc = mymap1.key_comp(); \033[0m\n";
+	ft::map<char, int>::key_compare kc = mymap1.key_comp();
+	std::cout << "\033[1;32mkc('a', 'b') Expected: 1 Realized:  \033[0m" << kc('a', 'b') << std::endl;
+	std::cout << "\033[1;32mkc('b', 'c') Expected: 1 Realized:  \033[0m" << kc('a', 'b') << std::endl;
+	std::cout << "\033[1;32mkc('c', 'd') Expected: 1 Realized:  \033[0m" << kc('a', 'b') << std::endl;
+	std::cout << "\033[1;32mkc('d', 'e') Expected: 1 Realized:  \033[0m" << kc('a', 'b') << std::endl;
+	std::cout << "\033[1;32mkc('e', 'f') Expected: 1 Realized:  \033[0m" << kc('a', 'b') << std::endl;
+	std::cout << "\033[1;32mkc('f', 'g') Expected: 1 Realized:  \033[0m" << kc('a', 'b') << std::endl;
+	std::cout << "\033[1;32mkc('g', 'h') Expected: 1 Realized:  \033[0m" << kc('a', 'b') << std::endl;
+	std::cout << "\033[1;32mkc('h', 'i') Expected: 1 Realized:  \033[0m" << kc('a', 'b') << std::endl;
+	std::cout << "\033[1;32mkc('i', 'j') Expected: 1 Realized:  \033[0m" << kc('a', 'b') << std::endl;
+
+	std::cout << "\033[1;32mft::map<char, int>::iterator it; \033[0m\n";
+	std::cout << "\033[1;32mfor (it = mymap1.begin(); it != mymap1.end(); ++it) \033[0m\n";
+	ft::map<char, int>::iterator it;
+	for (it = mymap1.begin(); it != mymap1.end(); ++it)
+	{
+		std::cout << "\033[1;32m	kc(it->first,(char)(it->first + 1)) -> kc(" << it->first << ", " << (char)(it->first + 1) << "):  \033[0m" << kc(it->first, it->first + 1) << std::endl;
+	}
+
+	std::cout << std::endl;
+	std::cout << "----------------------------------------------" << std::endl;
+}
+
+void test_49(void) 
+{
+	std::cout << "\033[1;31mTest 49: Test Map Value Comp\033[0m\n"<< std::endl;
+	std::cout << "\033[1;32mft::map<char, int> mymap1; \033[0m\n";
+	std::cout << "\033[1;32mmymap1['a'] = 2; \033[0m\n";
+	std::cout << "\033[1;32mmymap1['b'] = 4; \033[0m\n";
+	std::cout << "\033[1;32mmymap1['c'] = 6; \033[0m\n";
+	std::cout << "\033[1;32mmymap1['d'] = 8; \033[0m\n";
+	std::cout << "\033[1;32mmymap1['e'] = 10; \033[0m\n";
+
+	ft::map<char, int> mymap1;
+	mymap1['a'] = 2;
+	mymap1['b'] = 4;
+	mymap1['c'] = 6;
+	mymap1['d'] = 8;
+	mymap1['e'] = 10;
+
+	std::cout << "\033[1;32mft::map<char, int>::value_compare vc = mymap1.value_comp(); \033[0m\n";
+	ft::map<char, int>::value_compare vc = mymap1.value_comp();
+	
+	std::cout << "\033[1;32mft::map<char, int>::iterator it; \033[0m\n";
+	std::cout << "\033[1;32mft::pair<char, int> highest = ft::make_pair('f', 12); \033[0m\n";
+	ft::map<char, int>::iterator it;
+  	ft::pair<char, int> highest = ft::make_pair('f', 12);
+
+	std::cout << "\033[1;32mfor (it = mymap1.begin(); it != mymap1.end(); ++it) \033[0m\n";
+  	for (it = mymap1.begin(); it != mymap1.end(); ++it)
+	{
+		std::cout << "\033[1;32m	vc(*it, highest)  \033[0m" << vc(*it, highest) << std::endl;
+  	}
+
+	std::cout << std::endl;
+	std::cout << "----------------------------------------------" << std::endl;
+}
+
+void test_50(void) 
+{
+	std::cout << "\033[1;31mTest 50: Test Map Find\033[0m\n"<< std::endl;
+	std::cout << "\033[1;32mft::map<char, int> mymap; \033[0m\n";
+	std::cout << "\033[1;32mmymap['a'] = 2; \033[0m\n";
+	std::cout << "\033[1;32mmymap['b'] = 4; \033[0m\n";
+	std::cout << "\033[1;32mmymap['c'] = 6; \033[0m\n";
+	std::cout << "\033[1;32mmymap['d'] = 8; \033[0m\n";
+	std::cout << "\033[1;32mmymap['e'] = 10; \033[0m\n";
+
+	ft::map<char, int> mymap;
+	mymap['a'] = 2;
+	mymap['b'] = 4;
+	mymap['c'] = 6;
+	mymap['d'] = 8;
+
+	std::cout << "\033[1;32mft::map<char, int>::iterator it = mymap.find('a'); \033[0m\n";
+	ft::map<char, int>::iterator it = mymap.find('a');
+
+	std::cout << "\033[1;32mit->first:  \033[0m" << it->first << std::endl;
+	std::cout << "\033[1;32mit->second:  \033[0m" << it->second << std::endl;
+
+	std::cout << "\033[1;32mit = mymap.find('f'); \033[0m\n";
+	it = mymap.find('f'); 
+	bool test;
+	test =  it == mymap.end();
+	std::cout << "\033[1;32mit == mymap.end() ? expected 1: realized: \033[0m" << test << std::endl;
+
+	std::cout << "\033[1;32mconst ft::map<char, int> mymap2(mymap); \033[0m\n";
+  	const ft::map<char, int> mymap2(mymap);
+	std::cout << "\033[1;32mft::map<char, int>::const_iterator it2 = mymap2.find('a'); \033[0m\n";
+	ft::map<char, int>::const_iterator it2 = mymap2.find('a');
+	std::cout << "\033[1;32mit2->first:  \033[0m" << it2->first << std::endl;
+	std::cout << "\033[1;32mit2->second:  \033[0m" << it2->second << std::endl;
+
+	std::cout << std::endl;
+	std::cout << "----------------------------------------------" << std::endl;
+}
+
+void test_51(void) 
+{
+	std::cout << "\033[1;31mTest 51: Test Map Count\033[0m\n"<< std::endl;
+	std::cout << "\033[1;32mft::map<char, int> mymap; \033[0m\n";
+	std::cout << "\033[1;32mmymap['a'] = 2; \033[0m\n";
+	std::cout << "\033[1;32mmymap['b'] = 4; \033[0m\n";
+	std::cout << "\033[1;32mmymap['c'] = 6; \033[0m\n";
+	std::cout << "\033[1;32mmymap['d'] = 8; \033[0m\n";
+	std::cout << "\033[1;32mmymap['e'] = 10; \033[0m\n";
+
+	ft::map<char, int> mymap;
+	mymap['a'] = 2;
+	mymap['b'] = 4;
+	mymap['c'] = 6;
+	mymap['d'] = 8;
+
+	std::cout << "\033[1;32mmymap.count('a')  \033[0m" << mymap.count('a') << std::endl;
+	std::cout << "\033[1;32mmymap.count('f') \033[0m" << mymap.count('f') << std::endl;
+	std::cout << std::endl;
+	std::cout << "----------------------------------------------" << std::endl;
+}
+
+void test_52(void) 
+{
+	std::cout << "\033[1;31mTest 52: Test Map Lower Bound\033[0m\n"<< std::endl;
+	std::cout << "\033[1;32mft::map<char, int> mymap; \033[0m\n";
+	std::cout << "\033[1;32mmymap['a'] = 2; \033[0m\n";
+	std::cout << "\033[1;32mmymap['b'] = 4; \033[0m\n";
+	std::cout << "\033[1;32mmymap['c'] = 6; \033[0m\n";
+	std::cout << "\033[1;32mmymap['d'] = 8; \033[0m\n";
+	std::cout << "\033[1;32mmymap['e'] = 10; \033[0m\n";
+	std::cout << "\033[1;32mmymap['f'] = 12; \033[0m\n";
+	std::cout << "\033[1;32mmymap['i'] = 18; \033[0m\n";
+	std::cout << "\033[1;32mmymap['l'] = 24; \033[0m\n";
+	std::cout << "\033[1;32mmymap['m'] = 26; \033[0m\n";
+	std::cout << "\033[1;32mmymap['p'] = 32; \033[0m\n";
+
+	ft::map<char, int> mymap;
+	mymap['a'] = 2;
+	mymap['b'] = 4;
+	mymap['c'] = 6;
+	mymap['d'] = 8;
+	mymap['e'] = 10;
+	mymap['f'] = 12;
+	mymap['i'] = 18;
+	mymap['l'] = 24;
+	mymap['m'] = 26;
+	mymap['p'] = 32;
+
+	std::cout << "\033[1;32mft::map<char, int>::iterator it = mymap.lower_bound('a'); \033[0m\n";
+	ft::map<char, int>::iterator it = mymap.lower_bound('a');
+	std::cout << "\033[1;32mit->first:  \033[0m" << it->first << std::endl;
+	std::cout << "\033[1;32mit->second:  \033[0m" << it->second << std::endl;
+
+	std::cout << "\033[1;32mit = mymap.lower_bound('b'); \033[0m\n";
+	it = mymap.lower_bound('b');
+	std::cout << "\033[1;32mit->first:  \033[0m" << it->first << std::endl;
+	std::cout << "\033[1;32mit->second:  \033[0m" << it->second << std::endl;
+
+	std::cout << "\033[1;32mit = mymap.lower_bound('g'); \033[0m\n";
+	it = mymap.lower_bound('g');
+	std::cout << "\033[1;32mit->first:  \033[0m" << it->first << std::endl;
+	std::cout << "\033[1;32mit->second:  \033[0m" << it->second << std::endl;
+
+	std::cout << "\033[1;32mconst ft::map<char, int> mymap2(mymap); \033[0m\n";
+	const ft::map<char, int> mymap2(mymap);
+
+	std::cout << "\033[1;32mft::map<char, int>::const_iterator it2 = mymap2.lower_bound('a'); \033[0m\n";
+	ft::map<char, int>::const_iterator it2 = mymap2.lower_bound('a');
+	std::cout << "\033[1;32mit2->first:  \033[0m" << it2->first << std::endl;
+	std::cout << "\033[1;32mit2->second:  \033[0m" << it2->second << std::endl;
+
+	std::cout << "\033[1;32mft::map<char, int>::const_iterator it3 = mymap2.lower_bound('q'); \033[0m\n";
+	ft::map<char, int>::const_iterator it3 = mymap2.lower_bound('q');
+	bool test;
+	test = it3 == mymap2.end();
+	std::cout << "\033[1;32mit3 == mymap2.end() ? Expected: 1,  Realized:  \033[0m" << test << std::endl;
+
+
+	std::cout << std::endl;
+	std::cout << "----------------------------------------------" << std::endl;
+}
+
+void test_53(void) 
+{
+	std::cout << "\033[1;31mTest 53: TestMap Upper Bound\033[0m\n"<< std::endl;
+	std::cout << "\033[1;32mft::map<char, int> mymap; \033[0m\n";
+	std::cout << "\033[1;32mmymap['a'] = 2; \033[0m\n";
+	std::cout << "\033[1;32mmymap['b'] = 4; \033[0m\n";
+	std::cout << "\033[1;32mmymap['c'] = 6; \033[0m\n";
+	std::cout << "\033[1;32mmymap['d'] = 8; \033[0m\n";
+	std::cout << "\033[1;32mmymap['e'] = 10; \033[0m\n";
+	std::cout << "\033[1;32mmymap['f'] = 12; \033[0m\n";
+	std::cout << "\033[1;32mmymap['i'] = 18; \033[0m\n";
+	std::cout << "\033[1;32mmymap['l'] = 24; \033[0m\n";
+	std::cout << "\033[1;32mmymap['m'] = 26; \033[0m\n";
+	std::cout << "\033[1;32mmymap['p'] = 32; \033[0m\n";
+
+	ft::map<char, int> mymap;
+	mymap['a'] = 2;
+	mymap['b'] = 4;
+	mymap['c'] = 6;
+	mymap['d'] = 8;
+	mymap['e'] = 10;
+	mymap['f'] = 12;
+	mymap['i'] = 18;
+	mymap['l'] = 24;
+	mymap['m'] = 26;
+	mymap['p'] = 32;
+
+	std::cout << "\033[1;32mft::map<char, int>::iterator it = mymap.upper_bound('a'); \033[0m\n";
+	ft::map<char, int>::iterator it = mymap.upper_bound('a');
+	std::cout << "\033[1;32mit->first:  \033[0m" << it->first << std::endl;
+	std::cout << "\033[1;32mit->second:  \033[0m" << it->second << std::endl;
+
+	std::cout << "\033[1;32mit = mymap.upper_bound('b'); \033[0m\n";
+	it = mymap.upper_bound('b');
+	std::cout << "\033[1;32mit->first:  \033[0m" << it->first << std::endl;
+	std::cout << "\033[1;32mit->second:  \033[0m" << it->second << std::endl;
+
+
+	std::cout << "\033[1;32mit = mymap.upper_bound('g'); \033[0m\n";
+	it = mymap.upper_bound('g');
+	std::cout << "\033[1;32mit->first:  \033[0m" << it->first << std::endl;
+	std::cout << "\033[1;32mit->second:  \033[0m" << it->second << std::endl;
+
+
+	std::cout << "\033[1;32mconst ft::map<char, int> mymap2(mymap); \033[0m\n";
+	const ft::map<char, int> mymap2(mymap);
+
+	std::cout << "\033[1;32mft::map<char, int>::const_iterator it2 = mymap2.upper_bound('a'); \033[0m\n";
+	ft::map<char, int>::const_iterator it2 = mymap2.upper_bound('a');
+	std::cout << "\033[1;32mit2->first:  \033[0m" << it2->first << std::endl;
+	std::cout << "\033[1;32mit2->second:  \033[0m" << it2->second << std::endl;
+
+	std::cout << "\033[1;32mft::map<char, int>::const_iterator it3 = mymap2.upper_bound('q'); \033[0m\n";
+	ft::map<char, int>::const_iterator it3 = mymap2.upper_bound('q');
+	bool test;
+	test = it3 == mymap2.end();
+	std::cout << "\033[1;32mit3 == mymap2.end() ? Expected: 1,  Realized:  \033[0m" << test << std::endl;
+
+	std::cout << std::endl;
+	std::cout << "----------------------------------------------" << std::endl;
+}
+
+void test_54(void) 
+{
+	std::cout << "\033[1;31mTest 54: Test Map Equal Range\033[0m\n"<< std::endl;
+	std::cout << "\033[1;32mft::map<char, int> mymap; \033[0m\n";
+	std::cout << "\033[1;32mmymap['a'] = 2; \033[0m\n";
+	std::cout << "\033[1;32mmymap['b'] = 4; \033[0m\n";
+	std::cout << "\033[1;32mmymap['c'] = 6; \033[0m\n";
+	std::cout << "\033[1;32mmymap['d'] = 8; \033[0m\n";
+	std::cout << "\033[1;32mmymap['e'] = 10; \033[0m\n";
+	std::cout << "\033[1;32mmymap['f'] = 12; \033[0m\n";
+	std::cout << "\033[1;32mmymap['i'] = 18; \033[0m\n";
+	std::cout << "\033[1;32mmymap['l'] = 24; \033[0m\n";
+	std::cout << "\033[1;32mmymap['m'] = 26; \033[0m\n";
+	std::cout << "\033[1;32mmymap['p'] = 32; \033[0m\n";
+
+	ft::map<char, int> mymap;
+	mymap['a'] = 2;
+	mymap['b'] = 4;
+	mymap['c'] = 6;
+	mymap['d'] = 8;
+	mymap['e'] = 10;
+	mymap['f'] = 12;
+	mymap['i'] = 18;
+	mymap['l'] = 24;
+	mymap['m'] = 26;
+	mymap['p'] = 32;
+
+	std::cout << "\033[1;32mft::pair<ft::map<char, int>::iterator, ft::map<char, int>::iterator> it = mymap.equal_range('a'); \033[0m\n";
+	ft::pair<ft::map<char, int>::iterator, ft::map<char, int>::iterator> it = mymap.equal_range('a');
+	std::cout << "\033[1;32mit.first->first  \033[0m" << it.first->first << std::endl;
+	std::cout << "\033[1;32mit.second->first  \033[0m" << it.second->first << std::endl;
+
+	std::cout << "\033[1;32mit = mymap.equal_range('b');  \033[0m" << std::endl;
+	it = mymap.equal_range('b');
+	std::cout << "\033[1;32mit.first->first  \033[0m" << it.first->first << std::endl;
+	std::cout << "\033[1;32mit.second->first  \033[0m" << it.second->first << std::endl;
+
+	std::cout << "\033[1;32mit = mymap.equal_range('g');  \033[0m" << std::endl;
+	it = mymap.equal_range('g');
+	std::cout << "\033[1;32mit.first->first  \033[0m" << it.first->first << std::endl;
+	std::cout << "\033[1;32mit.second->first  \033[0m" << it.second->first << std::endl;
+
+	std::cout << "\033[1;32mconst ft::map<char, int> mymap2(mymap);  \033[0m" << std::endl;
+	const ft::map<char, int> mymap2(mymap);
+
+	std::cout << "\033[1;32mft::pair<ft::map<char, int>::const_iterator, ft::map<char, int>::const_iterator> it2 = mymap2.equal_range('a'); \033[0m\n";
+	ft::pair<ft::map<char, int>::const_iterator, ft::map<char, int>::const_iterator> it2 = mymap2.equal_range('a');
+	std::cout << "\033[1;32mit2.first->first  \033[0m" << it2.first->first << std::endl;
+	std::cout << "\033[1;32mit2.second->first  \033[0m" << it2.second->first << std::endl;
+
+	std::cout << "\033[1;32mit2 = mymap2.equal_range('b');  \033[0m" << std::endl;
+	it2 = mymap2.equal_range('b');
+	std::cout << "\033[1;32mit2.first->first  \033[0m" << it2.first->first << std::endl;
+	std::cout << "\033[1;32mit2.second->first  \033[0m" << it2.second->first << std::endl;
+
+	std::cout << "\033[1;32mit2 = mymap2.equal_range('g');  \033[0m" << std::endl;
+	it2 = mymap2.equal_range('g');
+	std::cout << "\033[1;32mit2.first->first  \033[0m" << it2.first->first << std::endl;
+	std::cout << "\033[1;32mit2.second->first  \033[0m" << it2.second->first << std::endl;
+
+	std::cout << std::endl;
+	std::cout << "----------------------------------------------" << std::endl;
+}
+
+void test_55(void) 
+{
+	std::cout << "\033[1;31mTest 55: Test Get Allocator\033[0m\n"<< std::endl;
+	std::cout << "\033[1;32mft::map<char, int> mymap; \033[0m\n";
+	std::cout << "\033[1;32mstd::allocator<std::pair<const char, int>> alloc; \033[0m\n";
+	ft::map<char, int> mymap;
+	std::allocator<std::pair<const char, int> > alloc;
+	bool test;
+	test = mymap.get_allocator() ==  alloc;
+
+	std::cout << "\033[1;32mmymap.get_allocator() ==  alloc ? Expected: 1, Realized: \033[0m" << test << std::endl;
+
+	std::cout << std::endl;
+	std::cout << "----------------------------------------------" << std::endl;
+}
+
+void test_56(void) 
+{
+	std::cout << "\033[1;31mTest 56: Test Map Comparison Operators\033[0m\n"<< std::endl;
+	std::cout << "\033[1;32mft::map<char, int> mymap1; \033[0m\n";
+	std::cout << "\033[1;32mft::map<char, int> mymap2; \033[0m\n";
+	std::cout << "\033[1;32mft::map<char, int> mymap3; \033[0m\n";
+	std::cout << "\033[1;32mft::map<char, int> mymap4; \033[0m\n"<< std::endl;
+	ft::map<char, int> mymap1;
+  	ft::map<char, int> mymap2;
+  	ft::map<char, int> mymap3;
+  	ft::map<char, int> mymap4;
+
+	std::cout << "\033[1;32mmymap1['a'] = 2; \033[0m\n";
+	std::cout << "\033[1;32mmymap1['b'] = 4; \033[0m\n";
+	std::cout << "\033[1;32mmymap1['c'] = 6; \033[0m\n";
+	std::cout << "\033[1;32mmymap1['d'] = 8; \033[0m\n";
+	std::cout << "\033[1;32mmymap1['e'] = 10; \033[0m\n";
+	std::cout << "\033[1;32mmymap1['f'] = 12; \033[0m\n";
+	std::cout << "\033[1;32mmymap1['i'] = 18; \033[0m\n";
+	std::cout << "\033[1;32mmymap1['l'] = 24; \033[0m\n";
+	std::cout << "\033[1;32mmymap1['m'] = 26; \033[0m\n";
+	std::cout << "\033[1;32mmymap1['p'] = 32; \033[0m\n"<< std::endl;
+
+	mymap1['a'] = 2;
+	mymap1['b'] = 4;
+	mymap1['c'] = 6;
+	mymap1['d'] = 8;
+	mymap1['e'] = 10;
+	mymap1['f'] = 12;
+	mymap1['i'] = 18;
+	mymap1['l'] = 24;
+	mymap1['m'] = 26;
+	mymap1['p'] = 32;
+
+	std::cout << "\033[1;32mmymap2['a'] = 2; \033[0m\n";
+	std::cout << "\033[1;32mmymap2['b'] = 4; \033[0m\n";
+	std::cout << "\033[1;32mmymap2['c'] = 6; \033[0m\n";
+	std::cout << "\033[1;32mmymap2['d'] = 8; \033[0m\n";
+	std::cout << "\033[1;32mmymap2['e'] = 10; \033[0m\n";
+	std::cout << "\033[1;32mmymap2['f'] = 12; \033[0m\n";
+	std::cout << "\033[1;32mmymap2['i'] = 12; \033[0m\n"<< std::endl;
+
+	mymap2['a'] = 2;
+	mymap2['b'] = 4;
+	mymap2['c'] = 6;
+	mymap2['d'] = 8;
+	mymap2['e'] = 10;
+	mymap2['f'] = 12;
+	mymap2['i'] = 18;
+
+	std::cout << "\033[1;32mmymap3['a'] = 2; \033[0m\n";
+	std::cout << "\033[1;32mmymap3['b'] = 4; \033[0m\n";
+	std::cout << "\033[1;32mmymap3['c'] = 6; \033[0m\n";
+	std::cout << "\033[1;32mmymap3['d'] = 8; \033[0m\n";
+	std::cout << "\033[1;32mmymap3['e'] = 10; \033[0m\n";
+	std::cout << "\033[1;32mmymap3['f'] = 12; \033[0m\n";
+	std::cout << "\033[1;32mmymap3['i'] = 18; \033[0m\n";
+	std::cout << "\033[1;32mmymap3['l'] = 24; \033[0m\n";
+	std::cout << "\033[1;32mmymap3['m'] = 26; \033[0m\n";
+	std::cout << "\033[1;32mmymap3['p'] = 32; \033[0m\n"<< std::endl;
+
+	mymap3['a'] = 2;
+	mymap3['b'] = 4;
+	mymap3['c'] = 6;
+	mymap3['d'] = 8;
+	mymap3['e'] = 10;
+	mymap3['f'] = 12;
+	mymap3['i'] = 18;
+	mymap3['l'] = 24;
+	mymap3['m'] = 26;
+	mymap3['p'] = 32;
+
+	bool test;
+	test = mymap1 == mymap3;
+	std::cout << "\033[1;32mmymap1 == mymap3, Expectec:1, Realized: \033[0m" << test << std::endl;
+	test = mymap1 != mymap2;
+	std::cout << "\033[1;32mmymap1 != mymap2, Expectec:1, Realized: \033[0m" << test << std::endl;
+	test = mymap2 < mymap1;
+	std::cout << "\033[1;32mmymap2 < mymap1, Expectec:1, Realized: \033[0m" << test << std::endl;
+	test = mymap1 > mymap2;
+	std::cout << "\033[1;32mmymap1 > mymap2, Expectec:1, Realized: \033[0m" << test << std::endl;
+	test = mymap1 <= mymap3;
+	std::cout << "\033[1;32mmymap1 <= mymap3, Expectec:1, Realized: \033[0m" << test  << std::endl;
+	test = mymap1 >= mymap3;
+	std::cout << "\033[1;32mmymap1 >= mymap3, Expectec:1, Realized: \033[0m" << test << std::endl;
+	test = mymap1 <= mymap1;
+	std::cout << "\033[1;32mmymap1 <= mymap1, Expectec:1, Realized: \033[0m" << test << std::endl;
+	test = mymap1 >= mymap1;
+	std::cout << "\033[1;32mmymap1 >= mymap1, Expectec:1, Realized: \033[0m" << test << std::endl;
+
+
+	std::cout << std::endl;
+	std::cout << "----------------------------------------------" << std::endl;
+}
+
+void test_57(void) 
+{
+	std::cout << "\033[1;31mTest 57: Test Map Swap Operator\033[0m\n"<< std::endl;
+	std::cout << "\033[1;32mft::map<char, int> mymap1; \033[0m\n";
+	std::cout << "\033[1;32mft::map<char, int> mymap2; \033[0m\n";
+	ft::map<char, int> mymap1;
+	ft::map<char, int> mymap2;
+
+	std::cout << "\033[1;32mmymap1['a'] = 2; \033[0m\n";
+	std::cout << "\033[1;32mmymap1['b'] = 4; \033[0m\n";
+	std::cout << "\033[1;32mmymap1['c'] = 6; \033[0m\n";
+	std::cout << "\033[1;32mmymap1['d'] = 8; \033[0m\n";
+	std::cout << "\033[1;32mmymap1['e'] = 10; \033[0m\n";
+	std::cout << "\033[1;32mmymap1['f'] = 12; \033[0m\n";
+	std::cout << "\033[1;32mmymap1['i'] = 18; \033[0m\n";
+	std::cout << "\033[1;32mmymap1['l'] = 24; \033[0m\n";
+	std::cout << "\033[1;32mmymap1['m'] = 26; \033[0m\n";
+	std::cout << "\033[1;32mmymap1['p'] = 32; \033[0m\n"<< std::endl;
+
+	mymap1['a'] = 2;
+	mymap1['b'] = 4;
+	mymap1['c'] = 6;
+	mymap1['d'] = 8;
+	mymap1['e'] = 10;
+	mymap1['f'] = 12;
+	mymap1['i'] = 18;
+	mymap1['l'] = 24;
+	mymap1['m'] = 26;
+	mymap1['p'] = 32;
+
+	std::cout << "\033[1;32mmymap2['a'] = 2; \033[0m\n";
+	std::cout << "\033[1;32mmymap2['b'] = 4; \033[0m\n";
+	std::cout << "\033[1;32mmymap2['c'] = 6; \033[0m\n";
+	std::cout << "\033[1;32mmymap2['d'] = 8; \033[0m\n";
+	std::cout << "\033[1;32mmymap2['e'] = 10; \033[0m\n";
+	std::cout << "\033[1;32mmymap2['f'] = 12; \033[0m\n";
+	std::cout << "\033[1;32mmymap2['i'] = 18; \033[0m\n";
+	std::cout << "\033[1;32mmymap2['l'] = 24; \033[0m\n";
+	std::cout << "\033[1;32mmymap2['m'] = 26; \033[0m\n";
+	std::cout << "\033[1;32mmymap2['p'] = 32; \033[0m\n"<< std::endl;
+
+	mymap2['a'] = 2;
+	mymap2['b'] = 4;
+	mymap2['c'] = 6;
+	mymap2['d'] = 8;
+	mymap2['e'] = 10;
+	mymap2['f'] = 12;
+	mymap2['i'] = 18;
+	mymap2['l'] = 24;
+	mymap2['m'] = 26;
+	mymap2['p'] = 32;
+
+	std::cout << "\033[1;32mft::swap(mymap1, mymap2); \033[0m" << std::endl;
+	ft::swap(mymap1, mymap2);
+
+	bool test;
+	test = mymap1 == mymap2;
+	std::cout << "\033[1;32mmymap1 == mymap2, Expectec:1, Realized: \033[0m" << test << std::endl;
+
+	test = mymap2 == mymap1;
+	std::cout << "\033[1;32mmymap2 == mymap1, Expectec:1, Realized: \033[0m" << test << std::endl;
+
+	std::cout << std::endl;
+	std::cout << "----------------------------------------------" << std::endl;
+}
+
+void test_58(void) 
+{
+	std::cout << "\033[1;31mTest 58: Test Map Insert\033[0m\n"<< std::endl;
+
+
+	std::cout << std::endl;
+	std::cout << "----------------------------------------------" << std::endl;
+}
+
+void test_59(void) 
+{
+	std::cout << "\033[1;31mTest 59: Test Map Insert\033[0m\n"<< std::endl;
+
+
+	std::cout << std::endl;
+	std::cout << "----------------------------------------------" << std::endl;
+}
+
+void test_60(void) 
+{
+	std::cout << "\033[1;31mTest 60: Test Map Insert\033[0m\n"<< std::endl;
+
+
+	std::cout << std::endl;
+	std::cout << "----------------------------------------------" << std::endl;
+}
+
+void test_61(void) 
+{
+	std::cout << "\033[1;31mTest 61: Test Map Insert\033[0m\n"<< std::endl;
+
+
+	std::cout << std::endl;
+	std::cout << "----------------------------------------------" << std::endl;
+}
+
+
+void test_62(void) 
+{
+	std::cout << "\033[1;31mTest 62: Test Map Insert\033[0m\n"<< std::endl;
+
+
+	std::cout << std::endl;
+	std::cout << "----------------------------------------------" << std::endl;
+}
+
+
+void test_63(void) 
+{
+	std::cout << "\033[1;31mTest 63: Test Map Insert\033[0m\n"<< std::endl;
+
+
+	std::cout << std::endl;
+	std::cout << "----------------------------------------------" << std::endl;
+}
+
+void test_64(void) 
+{
+	std::cout << "\033[1;31mTest 64: Test Map Insert\033[0m\n"<< std::endl;
+
+
+	std::cout << std::endl;
+	std::cout << "----------------------------------------------" << std::endl;
+}
+
+void test_65(void) 
+{
+	std::cout << "\033[1;31mTest 65: Test Map Insert\033[0m\n"<< std::endl;
+
+
+	std::cout << std::endl;
+	std::cout << "----------------------------------------------" << std::endl;
 }
 
 int main(void)
@@ -1599,5 +2547,26 @@ int main(void)
 	test_34();
 	test_35();
 	test_36();
+	test_37();
+	test_38();
+	test_39();
+	test_40();
+	test_41();
+	test_42();
+	test_43();
+	test_44();
+	test_45();
+	test_46();
+	test_47();
+	test_48();
+	test_49();
+	test_50();
+	test_51();
+	test_52();
+	test_53();
+	test_54();
+	test_55();
+	test_56();
+	test_57();
 	return (0);
 }

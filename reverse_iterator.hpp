@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   reverse_iterator.hpp                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rdutenke <rdutenke@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: coder <coder@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/24 19:55:15 by rdutenke          #+#    #+#             */
-/*   Updated: 2022/05/01 16:32:11 by rdutenke         ###   ########.fr       */
+/*   Updated: 2022/06/04 23:55:06 by coder            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,17 +33,11 @@ namespace ft {
 		{
 			return ;
 		}
-		
-		explicit reverse_iterator(iterator_type it)
-		{
-			this->_it = it;
-		}
-		
+	
+		explicit reverse_iterator(iterator_type it) : _it(it) {}
+				
 		template <class Iter>
-		reverse_iterator(const reverse_iterator<Iter> &other)
-		{
-			this->_it = other.base();
-		}
+  		reverse_iterator(const reverse_iterator<Iter> &other) : _it(other.base()) {}
 		
 		~reverse_iterator(void)
 		{

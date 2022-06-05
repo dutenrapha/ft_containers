@@ -6,7 +6,7 @@
 /*   By: coder <coder@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/30 23:11:09 by rdutenke          #+#    #+#             */
-/*   Updated: 2022/06/04 21:12:13 by coder            ###   ########.fr       */
+/*   Updated: 2022/06/05 17:04:04 by coder            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -111,6 +111,12 @@ namespace ft {
 
 			void copy(const RBTree &x);
 
+			void eraseInLeaf(NodePtr &r);
+
+			NodePtr _lower_bound(const key_type &key) const;
+			
+			NodePtr _upper_bound(const key_type &key) const;
+
 		//Public interface
 		public:
 	
@@ -129,6 +135,11 @@ namespace ft {
 
 			pair<iterator, bool> insertUni(const V &elemToInsert);
 
+			iterator insertUni(iterator hint, const V &elemToInsert);
+
+			template <class iterator>
+			void insertUni(iterator first, iterator last);
+
 			iterator insertMulti(const V &elemToInsert);
 
 			void clear(void);
@@ -136,6 +147,11 @@ namespace ft {
 			size_type erase(const K &keyToRem);
 
 			void erase(iterator pos);
+
+			void erase(iterator first, iterator last);
+
+			void swap(RBTree &tree);
+
 					
 	};
 
@@ -511,12 +527,36 @@ namespace ft {
 	}
 
 	template<class K, class V, class KFromV, class Cmp, class Alloc>
+	typename RBTree<K,V,KFromV,Cmp,Alloc>::iterator RBTree<K,V,KFromV,Cmp,Alloc>::insertUni(iterator hint, const V &v)
+	{
+		(void)hint;
+		pair<iterator, bool> res = insertNode<false>(v);
+		if (res.second)
+		{
+			adjustInsert(this->getNode(res.first));
+		}
+		return res.first;
+	}
+			
+	template<class K, class V, class KFromV, class Cmp, class Alloc>
+	template <class iterator>
+	void RBTree<K,V,KFromV,Cmp,Alloc>::insertUni(iterator first, iterator last)
+	{
+		for (; first != last; ++first)
+		{
+			insertUni(*first);
+		}
+	}
+
+
+	template<class K, class V, class KFromV, class Cmp, class Alloc>
 	typename RBTree<K,V,KFromV,Cmp,Alloc>::iterator RBTree<K,V,KFromV,Cmp,Alloc>::insertMulti(const V &v)
 	{
 		iterator res = insertNode<true>(v).first;
 		adjustInsert(getNode(res));
 		return res;
 	}
+
 
 	template<class K, class V, class KFromV, class Cmp, class Alloc>
 	void RBTree<K,V,KFromV,Cmp,Alloc>::clear(void)
@@ -532,30 +572,63 @@ namespace ft {
 	typename RBTree<K,V,KFromV,Cmp,Alloc>::size_type RBTree<K,V,KFromV,Cmp,Alloc>::erase(const K &e)
 	{
 		size_type count = 0;
-		iterator p = find(e);
+		iterator p = this->find(e);
 		if ( p != this->end() )
 		{
 			do
 			{
-				++count; erase(p++);
+				++count; 
+				erase(p++);
 			}
-			while (p!=this->end() && !cmp(e, key(*p)));
+			while (p!=this->end() && !this->cmp(e, this->key(*p)));
 		}
 		return count;
 	}
 
+	template<class K, class V, class KFromV, class Cmp, class A>
+	void RBTree<K,V,KFromV,Cmp,A>::eraseInLeaf(NodePtr &r)
+	{
+		if(isRed(r) || this->size()==1)
+		{
+			deleteNode(r); r = NULL; 
+			return;	
+		}
+		if(!isNullOrBlack(r->right) || !isNullOrBlack(r->left))
+		{
+			NodePtr rem = r;            
+			if(isNullOrBlack(r->left)) 
+			{
+				r = r->right;
+			}
+			else
+			{
+				r = r->left; 
+			}                      
+			r->parent = rem->parent;
+			deleteNode(rem);
+			setCol(r,BLACK);
+		}
+		else
+		{                                    
+			NodePtr parent= r->parent;
+			deleteNode(r); r = NULL;
+			rebalance(parent, NULL);
+		}
+	}
+
+
 	template<class K, class V, class KFromV, class Cmp, class Alloc>
 	void RBTree<K,V,KFromV,Cmp,Alloc>::erase(iterator pos)
 	{
-		NodePtr p = getNode(pos);
+		NodePtr p = SUPER::getNode(pos);
 
 		if (p == SUPER::dummy->left)
 		{
-			SUPER::dummy->left= getNode(++iterator(pos));
+			SUPER::dummy->left= SUPER::getNode(++iterator(pos));
 		}
 		if (p == SUPER::dummy->right)
 		{
-			SUPER::dummy->right= getNode(--iterator(pos));
+			SUPER::dummy->right= SUPER::getNode(--iterator(pos));
 		}
 		if (p->left!= NULL && p->right!= NULL)
 		{
@@ -565,9 +638,57 @@ namespace ft {
 		--this->sz;
 	}
 
+	template<class K, class V, class KFromV, class Cmp, class Alloc>
+	void RBTree<K,V,KFromV,Cmp,Alloc>::erase(iterator first, iterator last)
+	{
+		if (first == this->begin() && last == this->end())
+		{
+      		clear();
+		}
+    	else
+		{
+			while (first != last)
+			{
+				erase(first++);
+			}
+		}
+	}
 
+	template<class K, class V, class KFromV, class Cmp, class Alloc>
+	void RBTree<K,V,KFromV,Cmp,Alloc>::swap(RBTree &tree)
+	{
+		RBTree<K, V, KFromV, Cmp, Alloc> tmp(tree);
+    	tree = *this;
+    	*this = tmp;
+	}
 
-	
+	template<class K, class V, class KFromV, class Cmp, class Alloc>
+	typename RBTree<K,V,KFromV,Cmp,Alloc>::NodePtr RBTree<K,V,KFromV,Cmp,Alloc>::_lower_bound(const key_type &key) const
+	{
+		NodePtr x = this->root;
+		NodePtr y = this->dummy;
+		while (x != NULL) {
+		if (!this->cmp(x->value.first, key))
+			y = x, x = x->left;
+		else
+			x = x->right;
+		}
+		return y;
+	}
+
+	template<class K, class V, class KFromV, class Cmp, class Alloc>
+	typename RBTree<K,V,KFromV,Cmp,Alloc>::NodePtr RBTree<K,V,KFromV,Cmp,Alloc>::_upper_bound(const key_type &key) const
+	{
+		NodePtr x = this->root;
+		NodePtr y = this->dummy;
+		while (x != NULL) {
+		if (this->cmp(key, x->value.first))
+			y = x, x = x->left;
+		else
+			x = x->right;
+		}
+		return y;
+	}	
 	#undef SUPER
 };
 

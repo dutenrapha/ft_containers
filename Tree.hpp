@@ -6,7 +6,7 @@
 /*   By: coder <coder@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/30 18:14:02 by rdutenke          #+#    #+#             */
-/*   Updated: 2022/06/04 21:12:19 by coder            ###   ########.fr       */
+/*   Updated: 2022/06/05 00:43:25 by coder            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,6 +58,11 @@ namespace ft {
 			{
 				return kFromV(e);
 			}
+
+			const K &key(const V &e) const
+			{
+				return kFromV(e);
+			}
 			
 			template<bool MULTI>
 			pair<iterator, bool> insertNode(const V&);
@@ -71,6 +76,8 @@ namespace ft {
 			}
 			
 			iterator find(const K&);
+
+			const_iterator find(const key_type &key) const;
 			
 			pair<iterator, bool> insertUni(const V &e)
 			{
@@ -162,9 +169,38 @@ namespace ft {
 		}
 		else
 		{
-			return getIterator(aux);
+			return this->getIterator(aux);
 		}
 	}
+
+	template<class K, class V, class F, class C, class Alloc>
+	typename Tree<K,V,F,C,Alloc>::const_iterator Tree<K,V,F,C,Alloc>::find(const K &k) const
+	{
+		NodePtr r = this->root;
+		NodePtr aux = SUPER::dummy;
+		
+		while ( r != NULL )
+		{
+			if (cmp(key(r->value), k) )
+			{
+				r = r->right;
+			}
+			else
+			{
+				aux = r; 
+				r = r->left;
+			}
+		}
+		if (aux == SUPER::dummy || cmp(k, key(aux->value)))
+		{
+			return SUPER::end();
+		}
+		else
+		{
+			return this->getConstIterator(aux);
+		}
+	}
+
 
 	template<class K, class V, class F, class C, class Alloc>
 	typename Tree<K,V,F,C,Alloc>::size_type Tree<K,V,F,C,Alloc>::erase(const K &k)
