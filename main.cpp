@@ -10,6 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "stack.hpp"
 #include <vector>
 #include "vector.hpp"
 #include "map.hpp"
@@ -2436,17 +2437,62 @@ void test_57(void)
 
 void test_58(void) 
 {
-	std::cout << "\033[1;31mTest 58: Test Map Insert\033[0m\n"<< std::endl;
+	std::cout << "\033[1;31mTest 58: Test Stack Constructor\033[0m\n"<< std::endl;
+	std::cout << "\033[1;32mft::vector<int> v; \033[0m\n";
+	std::cout << "\033[1;32mft::vector<int> v1(10, 42); \033[0m\n";
+	std::cout << "\033[1;32mstd::vector<int> v2(10, 42); \033[0m\n";
+	std::cout << "\033[1;32mft::stack<int> s(v); \033[0m\n";
+	std::cout << "\033[1;32mft::stack<int> s1(v1); \033[0m\n";
+	std::cout << "\033[1;32mft::stack<int, std::vector<int>> s2(v2); \033[0m\n";
 
 
+	ft::vector<int> v;
+  	ft::vector<int> v1(10, 42);
+  	std::vector<int> v2(10, 42);
+
+  	ft::stack<int> s(v);
+  	ft::stack<int> s1(v1);
+  	ft::stack<int, std::vector<int> > s2(v2);
+
+	std::cout << "\033[1;32ms.size():   \033[0m" << s.size() << std::endl;
+	std::cout << "\033[1;32ms1.size():  \033[0m" << s1.size() << std::endl;
+	std::cout << "\033[1;32ms2.size():  \033[0m" << s2.size() << std::endl;
 	std::cout << std::endl;
 	std::cout << "----------------------------------------------" << std::endl;
 }
 
 void test_59(void) 
 {
-	std::cout << "\033[1;31mTest 59: Test Map Insert\033[0m\n"<< std::endl;
+	std::cout << "\033[1;31mTest 59: Test Stack Push\033[0m\n"<< std::endl;
+	std::cout << "\033[1;32mft::vector<int> v; \033[0m\n";
+	std::cout << "\033[1;32mft::vector<int> v1(10, 42); \033[0m\n";
+	std::cout << "\033[1;32mstd::vector<int> v2(10, 42); \033[0m\n";
+	std::cout << "\033[1;32mft::stack<int> s(v); \033[0m\n";
+	std::cout << "\033[1;32mft::stack<int> s1(v1); \033[0m\n";
+	std::cout << "\033[1;32mft::stack<int, std::vector<int>> s2(v2); \033[0m\n";
 
+
+	ft::vector<int> v;
+  	ft::vector<int> v1(10, 42);
+  	std::vector<int> v2(10, 42);
+
+  	ft::stack<int> s(v);
+  	ft::stack<int> s1(v1);
+  	ft::stack<int, std::vector<int> > s2(v2);
+
+	std::cout << "\033[1;32ms.size():   \033[0m" << s.size() << std::endl;
+	std::cout << "\033[1;32ms1.size():  \033[0m" << s1.size() << std::endl;
+	std::cout << "\033[1;32ms2.size():  \033[0m" << s2.size() << std::endl;
+
+	std::cout << "\033[1;32ms.push(42);  \033[0m\n";
+	std::cout << "\033[1;32ms1.push(42); \033[0m\n";
+	std::cout << "\033[1;32ms2.push(42); \033[0m\n";
+	s.push(42);
+  	s1.push(42);
+  	s2.push(42);
+	std::cout << "\033[1;32ms.size():   \033[0m" << s.size() << std::endl;
+	std::cout << "\033[1;32ms1.size():  \033[0m" << s1.size() << std::endl;
+	std::cout << "\033[1;32ms2.size():  \033[0m" << s2.size() << std::endl;
 
 	std::cout << std::endl;
 	std::cout << "----------------------------------------------" << std::endl;
@@ -2454,8 +2500,37 @@ void test_59(void)
 
 void test_60(void) 
 {
-	std::cout << "\033[1;31mTest 60: Test Map Insert\033[0m\n"<< std::endl;
+	std::cout << "\033[1;31mTest 60: Test Stack Top\033[0m\n"<< std::endl;
+	std::cout << "\033[1;32mft::vector<int> v; \033[0m\n";
+	std::cout << "\033[1;32mft::vector<int> v1(10, 42); \033[0m\n";
+	std::cout << "\033[1;32mstd::vector<int> v2(10, 42); \033[0m\n";
+	std::cout << "\033[1;32mft::stack<int> s(v); \033[0m\n";
+	std::cout << "\033[1;32mft::stack<int> s1(v1); \033[0m\n";
+	std::cout << "\033[1;32mft::stack<int, std::vector<int>> s2(v2); \033[0m\n";
 
+
+	ft::vector<int> v;
+  	ft::vector<int> v1(10, 42);
+  	std::vector<int> v2(10, 42);
+
+  	ft::stack<int> s(v);
+  	ft::stack<int> s1(v1);
+  	ft::stack<int, std::vector<int> > s2(v2);
+
+	std::cout << "\033[1;32ms.size():  \033[0m" << s.size() << std::endl;
+	std::cout << "\033[1;32ms1.size(): \033[0m" << s1.size() << std::endl;
+	std::cout << "\033[1;32ms2.size(): \033[0m" << s2.size() << std::endl;
+
+	std::cout << "\033[1;32ms.push(42); \033[0m\n";
+	std::cout << "\033[1;32ms1.push(42);\033[0m\n";
+	std::cout << "\033[1;32ms2.push(42);\033[0m\n";
+	s.push(43);
+  	s1.push(43);
+  	s2.push(43);
+
+	std::cout << "\033[1;32ms.top():  \033[0m" << s.top() << std::endl;
+	std::cout << "\033[1;32ms1.top(): \033[0m" << s1.top() << std::endl;
+	std::cout << "\033[1;32ms2.top(): \033[0m" << s2.top() << std::endl;
 
 	std::cout << std::endl;
 	std::cout << "----------------------------------------------" << std::endl;
@@ -2463,9 +2538,46 @@ void test_60(void)
 
 void test_61(void) 
 {
-	std::cout << "\033[1;31mTest 61: Test Map Insert\033[0m\n"<< std::endl;
+	std::cout << "\033[1;31mTest 61: Test Stack Pop\033[0m\n"<< std::endl;
+	std::cout << "\033[1;32mft::vector<int> v; \033[0m\n";
+	std::cout << "\033[1;32mft::vector<int> v1(10, 42); \033[0m\n";
+	std::cout << "\033[1;32mstd::vector<int> v2(10, 42); \033[0m\n";
+	std::cout << "\033[1;32mft::stack<int> s(v); \033[0m\n";
+	std::cout << "\033[1;32mft::stack<int> s1(v1); \033[0m\n";
+	std::cout << "\033[1;32mft::stack<int, std::vector<int>> s2(v2); \033[0m\n";
 
+	ft::vector<int> v;
+  	ft::vector<int> v1(10, 42);
+  	std::vector<int> v2(10, 42);
 
+  	ft::stack<int> s(v);
+  	ft::stack<int> s1(v1);
+  	ft::stack<int, std::vector<int> > s2(v2);
+
+	std::cout << "\033[1;32ms.size():   \033[0m" << s.size() << std::endl;
+	std::cout << "\033[1;32ms1.size():  \033[0m" << s1.size() << std::endl;
+	std::cout << "\033[1;32ms2.size():  \033[0m" << s2.size() << std::endl;
+
+	std::cout << "\033[1;32ms.push(42);  \033[0m\n";
+	std::cout << "\033[1;32ms1.push(42); \033[0m\n";
+	std::cout << "\033[1;32ms2.push(42); \033[0m\n";
+	
+	s.push(42);
+  	s1.push(42);
+  	s2.push(42);
+	std::cout << "\033[1;32ms.size():   \033[0m" << s.size() << std::endl;
+	std::cout << "\033[1;32ms1.size():  \033[0m" << s1.size() << std::endl;
+	std::cout << "\033[1;32ms2.size():  \033[0m" << s2.size() << std::endl;
+	std::cout << "\033[1;32ms.pop();  \033[0m\n";
+	std::cout << "\033[1;32ms1.pop(); \033[0m\n";
+	std::cout << "\033[1;32ms2.pop(); \033[0m\n";
+
+	s.pop();
+ 	s1.pop();
+  	s2.pop();
+	std::cout << "\033[1;32ms.size():   \033[0m" << s.size() << std::endl;
+	std::cout << "\033[1;32ms1.size():  \033[0m" << s1.size() << std::endl;
+	std::cout << "\033[1;32ms2.size():  \033[0m" << s2.size() << std::endl;
 	std::cout << std::endl;
 	std::cout << "----------------------------------------------" << std::endl;
 }
@@ -2473,9 +2585,28 @@ void test_61(void)
 
 void test_62(void) 
 {
-	std::cout << "\033[1;31mTest 62: Test Map Insert\033[0m\n"<< std::endl;
+	std::cout << "\033[1;31mTest 62: Test Stack Empty\033[0m\n"<< std::endl;
+	std::cout << "\033[1;32mft::vector<int> v; \033[0m\n";
+	std::cout << "\033[1;32mft::vector<int> v1(10, 42); \033[0m\n";
+	std::cout << "\033[1;32mstd::vector<int> v2(10, 42); \033[0m\n";
+	std::cout << "\033[1;32mft::stack<int> s(v); \033[0m\n";
+	std::cout << "\033[1;32mft::stack<int> s1(v1); \033[0m\n";
+	std::cout << "\033[1;32mft::stack<int, std::vector<int>> s2(v2); \033[0m\n";
 
+	ft::vector<int> v;
+  	ft::vector<int> v1(10, 42);
+  	std::vector<int> v2(10, 42);
 
+  	ft::stack<int> s(v);
+  	ft::stack<int> s1(v1);
+  	ft::stack<int, std::vector<int> > s2(v2);
+
+	std::cout << "\033[1;32ms.size():   \033[0m" << s.size() << std::endl;
+	std::cout << "\033[1;32ms1.size():  \033[0m" << s1.size() << std::endl;
+	std::cout << "\033[1;32ms2.size():  \033[0m" << s2.size() << std::endl;
+	std::cout << "\033[1;32ms.empty(): Expected:1, Realized:\033[0m" << s.empty() << std::endl;
+	std::cout << "\033[1;32ms1.empty(): Expected:0, Realized:\033[0m" << s1.empty() << std::endl;
+	std::cout << "\033[1;32ms2.empty(): Expected:0, Realized:\033[0m" << s2.empty() << std::endl;
 	std::cout << std::endl;
 	std::cout << "----------------------------------------------" << std::endl;
 }
@@ -2483,8 +2614,39 @@ void test_62(void)
 
 void test_63(void) 
 {
-	std::cout << "\033[1;31mTest 63: Test Map Insert\033[0m\n"<< std::endl;
+	std::cout << "\033[1;31mTest 63: Test Comparison Operators\033[0m\n"<< std::endl;
+	std::cout << "\033[1;32mft::vector<int> v; \033[0m\n";
+	std::cout << "\033[1;32mft::vector<int> v1(10, 42); \033[0m\n";
+	std::cout << "\033[1;32mstd::vector<int> v2(10, 42); \033[0m\n";
+	std::cout << "\033[1;32mft::stack<int> s(v); \033[0m\n";
+	std::cout << "\033[1;32mft::stack<int> s1(v1); \033[0m\n";
+	std::cout << "\033[1;32mft::stack<int, std::vector<int>> s2(v2); \033[0m\n";
 
+	ft::vector<int> v;
+  	ft::vector<int> v1(10, 42);
+  	ft::vector<int> v2(10, 42);
+
+  	ft::stack<int> s(v);
+  	ft::stack<int> s1(v1);
+  	ft::stack<int, ft::vector<int> > s2(v2);
+
+	std::cout << "\033[1;32ms.size():   \033[0m" << s.size() << std::endl;
+	std::cout << "\033[1;32ms1.size():  \033[0m" << s1.size() << std::endl;
+	std::cout << "\033[1;32ms2.size():  \033[0m" << s2.size() << std::endl;
+
+	bool test;
+	test = s == s;
+	std::cout << "\033[1;32ms == s ? Expected:1, Realized:  \033[0m" << test << std::endl;
+	test = s != s;
+	std::cout << "\033[1;32ms != s ? Expected:0, Realized:  \033[0m" << test << std::endl;
+	test = s == s1;
+	std::cout << "\033[1;32ms == s1 ? Expected:0, Realized:  \033[0m" << test << std::endl;
+	test = s != s1;
+	std::cout << "\033[1;32ms != s1 ? Expected:1, Realized:  \033[0m" << test << std::endl;
+	test = s == s2;
+	std::cout << "\033[1;32ms == s2 ? Expected:0, Realized:  \033[0m" << test << std::endl;
+	// test = s != s2;
+	// std::cout << "\033[1;32ms != s2 ? Expected:1, Realized:  \033[0m" << test << std::endl;
 
 	std::cout << std::endl;
 	std::cout << "----------------------------------------------" << std::endl;
@@ -2568,5 +2730,11 @@ int main(void)
 	test_55();
 	test_56();
 	test_57();
+	test_58();
+	test_59();
+	test_60();
+	test_61();
+	test_62();
+	test_63();
 	return (0);
 }
