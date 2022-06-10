@@ -6,7 +6,7 @@
 /*   By: coder <coder@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/11 17:02:32 by rdutenke          #+#    #+#             */
-/*   Updated: 2022/06/05 16:30:55 by coder            ###   ########.fr       */
+/*   Updated: 2022/06/08 03:39:16 by coder            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,7 +77,7 @@ namespace ft
 			typedef typename SUPER::difference_type difference_type;
 			typedef typename SUPER::size_type size_type;
 			
-			map(const Cmp &c=Cmp(), const Alloc &a=Alloc() ) : SUPER(c, a) {}
+			explicit map(const Cmp &c=Cmp(), const Alloc &a=Alloc() ) : SUPER(c, a) {}
 
 			template <class iterator>
 			map(iterator first, iterator last, const Cmp &c = Cmp(),
@@ -91,6 +91,18 @@ namespace ft
 			}
 			
 			map(const map &x) :SUPER(x) {}
+
+			~map() {}	
+						
+			size_type max_size(void) const
+			{
+				return (this->allocRB.max_size());
+			}
+
+			T &operator[](const K &key)
+			{
+				return insert(value_type(key, T())).first->second;
+			}
 	
 			pair<iterator,bool> insert(const value_type &value) 
 			{
@@ -106,16 +118,6 @@ namespace ft
 			{
     			return SUPER::insertUni(first, last);
   			}
-		
-			T &operator[](const K &key)
-			{
-				return insert(value_type(key, T())).first->second;
-			}
-
-			size_type max_size(void) const
-			{
-				return (this->allocRB.max_size());
-			}
 
 			value_compare value_comp() const
 			{

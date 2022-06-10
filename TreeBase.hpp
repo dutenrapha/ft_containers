@@ -152,14 +152,14 @@ namespace ft {
 				return dummy->left;
 			}
 
-			iterator end(void)
-			{
-				return dummy;
-			}
-
 			const_iterator begin(void)	const
 			{
 				return dummy->left;
+			}
+
+			iterator end(void)
+			{
+				return dummy;
 			}
 
 			const_iterator end(void)	const
@@ -187,15 +187,15 @@ namespace ft {
 				return const_reverse_iterator(this->begin());
 			}
 
+			bool empty(void) const
+			{
+				return size() == 0;
+			}
+
 			//Access to dimensions
 			size_t size(void) const
 			{
 				return sz;
-			}
-
-			bool empty(void) const
-			{
-				return size() == 0;
 			}
 
 			//Access to elements

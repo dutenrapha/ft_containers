@@ -6,7 +6,7 @@
 /*   By: coder <coder@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/30 23:11:09 by rdutenke          #+#    #+#             */
-/*   Updated: 2022/06/05 17:04:04 by coder            ###   ########.fr       */
+/*   Updated: 2022/06/08 03:34:09 by coder            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -142,8 +142,6 @@ namespace ft {
 
 			iterator insertMulti(const V &elemToInsert);
 
-			void clear(void);
-
 			size_type erase(const K &keyToRem);
 
 			void erase(iterator pos);
@@ -151,6 +149,8 @@ namespace ft {
 			void erase(iterator first, iterator last);
 
 			void swap(RBTree &tree);
+
+			void clear(void);
 
 					
 	};
