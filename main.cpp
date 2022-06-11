@@ -2523,9 +2523,9 @@ void test_60(void)
 	std::cout << "\033[1;32ms1.size(): \033[0m" << s1.size() << std::endl;
 	std::cout << "\033[1;32ms2.size(): \033[0m" << s2.size() << std::endl;
 
-	std::cout << "\033[1;32ms.push(42); \033[0m\n";
-	std::cout << "\033[1;32ms1.push(42);\033[0m\n";
-	std::cout << "\033[1;32ms2.push(42);\033[0m\n";
+	std::cout << "\033[1;32ms.push(43); \033[0m\n";
+	std::cout << "\033[1;32ms1.push(43);\033[0m\n";
+	std::cout << "\033[1;32ms2.push(43);\033[0m\n";
 	s.push(43);
   	s1.push(43);
   	s2.push(43);

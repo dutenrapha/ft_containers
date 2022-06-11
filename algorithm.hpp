@@ -10,13 +10,16 @@
 /*                                                                            */
 /* ************************************************************************** */
 
+#ifndef ALGORITHM_HPP
+#define ALGORITHM_HPP
+
 namespace ft {
 
 	template <class T> void swap(T &a, T &b) 
 	{
-	T c(a);
-	a = b;
-	b = c;
+		T c(a);
+		a = b;
+		b = c;
 	}
 
 	template <class InputIterator1, class InputIterator2>
@@ -86,4 +89,6 @@ namespace ft {
 		}
 		return first2 != last2;
 	}	
-} 
+}
+
+#endif
