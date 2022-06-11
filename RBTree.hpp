@@ -6,7 +6,7 @@
 /*   By: coder <coder@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/30 23:11:09 by rdutenke          #+#    #+#             */
-/*   Updated: 2022/06/08 03:34:09 by coder            ###   ########.fr       */
+/*   Updated: 2022/06/11 03:26:26 by coder            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -114,8 +114,12 @@ namespace ft {
 			void eraseInLeaf(NodePtr &r);
 
 			NodePtr _lower_bound(const key_type &key) const;
+
+			NodePtr _set_lower_bound(const key_type &key) const;
 			
 			NodePtr _upper_bound(const key_type &key) const;
+
+			NodePtr _set_upper_bound(const key_type &key) const;			
 
 		//Public interface
 		public:
@@ -688,7 +692,37 @@ namespace ft {
 			x = x->right;
 		}
 		return y;
-	}	
+	}
+
+	template<class K, class V, class KFromV, class Cmp, class Alloc>
+	typename RBTree<K,V,KFromV,Cmp,Alloc>::NodePtr RBTree<K,V,KFromV,Cmp,Alloc>::_set_lower_bound(const key_type &key) const
+	{
+		NodePtr x = this->root;
+		NodePtr y = this->dummy;
+		while (x != NULL) {
+		if (!this->cmp(x->value, key))
+			y = x, x = x->left;
+		else
+			x = x->right;
+		}
+		return y;
+	}
+
+	template<class K, class V, class KFromV, class Cmp, class Alloc>
+	typename RBTree<K,V,KFromV,Cmp,Alloc>::NodePtr RBTree<K,V,KFromV,Cmp,Alloc>::_set_upper_bound(const key_type &key) const
+	{
+		NodePtr x = this->root;
+		NodePtr y = this->dummy;
+		while (x != NULL) {
+		if (this->cmp(key, x->value))
+			y = x, x = x->left;
+		else
+			x = x->right;
+		}
+		return y;
+	}
+
+	
 	#undef SUPER
 };
 

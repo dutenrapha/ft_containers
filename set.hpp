@@ -6,7 +6,7 @@
 /*   By: coder <coder@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/08 03:43:37 by coder             #+#    #+#             */
-/*   Updated: 2022/06/10 23:22:11 by coder            ###   ########.fr       */
+/*   Updated: 2022/06/11 03:56:04 by coder            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,9 +66,9 @@ namespace ft
 
 		~set() {}
 
-		 size_type count(const value_type &val) const
+		 size_type count(const value_type &value) const
 		{
-			if (this->find(val) != this->end())
+			if (this->find(value) != this->end())
 			{
 				return 1;
 			}
@@ -77,6 +77,68 @@ namespace ft
 				return 0;
 			}
 		}
+
+		ft::pair<iterator, bool> insert(const value_type &value)
+		{
+    		return SUPER::insertUni(value);
+  		}
+
+		iterator insert(iterator hint, const value_type &val)
+		{
+    		return SUPER::insertUni(hint, val);
+  		}
+
+		template <class InputIterator>
+  		void insert(InputIterator first, InputIterator last)
+		{
+    		return SUPER::insertUni(first, last);
+  		}
+
+		size_type max_size(void) const
+		{
+			return (this->allocRB.max_size());
+		}
+		
+		value_compare value_comp() const
+		{
+			return value_compare(SUPER::key_comp());
+		}
+
+		iterator lower_bound(const key_type &key)
+		{
+				return iterator(SUPER::_set_lower_bound(key));
+		}
+
+		const_iterator lower_bound(const key_type &key) const
+		{
+			return const_iterator(SUPER::_set_lower_bound(key));
+		}
+
+		iterator upper_bound(const key_type &key)
+		{
+				return iterator(SUPER::_set_upper_bound(key));
+		}
+
+		const_iterator upper_bound(const key_type &key) const
+		{
+			return const_iterator(SUPER::_set_upper_bound(key));
+		}
+
+		ft::pair<iterator, iterator> equal_range(const key_type &k)
+		{
+			return ft::make_pair(this->lower_bound(k), this->upper_bound(k));
+		}
+
+		ft::pair<const_iterator, const_iterator> equal_range(const key_type &k) const 
+		{
+			return ft::make_pair(this->lower_bound(k), this->upper_bound(k));
+		}
+
+		allocator_type get_allocator() const
+		{
+			return allocator_type(SUPER::alloc);
+		}
+			
 
 	};
 

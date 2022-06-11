@@ -6,7 +6,7 @@
 /*   By: coder <coder@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/22 00:27:56 by rdutenke          #+#    #+#             */
-/*   Updated: 2022/06/10 23:33:16 by coder            ###   ########.fr       */
+/*   Updated: 2022/06/11 04:17:03 by coder            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@
 #include "pair.hpp"
 #include "set.hpp"
 #include <map>
+#include <set>
 #include <limits>
 
 void	test_0(void)
@@ -2714,7 +2715,7 @@ void test_67(void)
 	std::cout << "\033[1;32ms2.size():   \033[0m" << s2.size() << std::endl;
 	bool test;
 	test = s == s2;
-  	std::cout << "\033[1;32mss == s2 ? Expectec 1: Realized: \033[0m" << test << std::endl;
+  	std::cout << "\033[1;32mss == s2 ? Expected 1: Realized: \033[0m" << test << std::endl;
 
 
 	std::cout << std::endl;
@@ -2731,11 +2732,11 @@ void test_68(void)
   	int arr[] = {1, 2, 3, 4, 5};
   	ft::set<int> s(arr, arr + 5);
   	ft::set<int>::iterator it = s.begin();
-	std::cout << "\033[1;32m*it++ Expectec 1: Realized: \033[0m" << *it++ << std::endl;
-	std::cout << "\033[1;32m*it++ Expectec 2: Realized: \033[0m" << *it++ << std::endl;
-	std::cout << "\033[1;32m*it++ Expectec 3: Realized: \033[0m" << *it++ << std::endl;
-	std::cout << "\033[1;32m*it++ Expectec 4: Realized: \033[0m" << *it++ << std::endl;
-	std::cout << "\033[1;32m*it++ Expectec 5: Realized: \033[0m" << *it++ << std::endl;
+	std::cout << "\033[1;32m*it++ Expected 1: Realized: \033[0m" << *it++ << std::endl;
+	std::cout << "\033[1;32m*it++ Expected 2: Realized: \033[0m" << *it++ << std::endl;
+	std::cout << "\033[1;32m*it++ Expected 3: Realized: \033[0m" << *it++ << std::endl;
+	std::cout << "\033[1;32m*it++ Expected 4: Realized: \033[0m" << *it++ << std::endl;
+	std::cout << "\033[1;32m*it++ Expected 5: Realized: \033[0m" << *it++ << std::endl;
   
 	std::cout << "\033[1;32mft::set<int> const sc(arr, arr + 5); \033[0m\n";
 	std::cout << "\033[1;32mft::set<int>::const_iterator itc = sc.begin(); \033[0m\n";
@@ -2743,11 +2744,11 @@ void test_68(void)
 	ft::set<int> const sc(arr, arr + 5);
 	ft::set<int>::const_iterator itc = sc.begin();
 
-	std::cout << "\033[1;32m*itc++ Expectec 1: Realized: \033[0m" << *itc++ << std::endl;
-	std::cout << "\033[1;32m*itc++ Expectec 2: Realized: \033[0m" << *itc++ << std::endl;
-	std::cout << "\033[1;32m*itc++ Expectec 3: Realized: \033[0m" << *itc++ << std::endl;
-	std::cout << "\033[1;32m*itc++ Expectec 4: Realized: \033[0m" << *itc++ << std::endl;
-	std::cout << "\033[1;32m*itc++ Expectec 5: Realized: \033[0m" << *itc++ << std::endl;
+	std::cout << "\033[1;32m*itc++ Expected 1: Realized: \033[0m" << *itc++ << std::endl;
+	std::cout << "\033[1;32m*itc++ Expected 2: Realized: \033[0m" << *itc++ << std::endl;
+	std::cout << "\033[1;32m*itc++ Expected 3: Realized: \033[0m" << *itc++ << std::endl;
+	std::cout << "\033[1;32m*itc++ Expected 4: Realized: \033[0m" << *itc++ << std::endl;
+	std::cout << "\033[1;32m*itc++ Expected 5: Realized: \033[0m" << *itc++ << std::endl;
   
 	std::cout << std::endl;
 	std::cout << "----------------------------------------------" << std::endl;
@@ -2763,11 +2764,11 @@ void test_69(void)
   	int arr[] = {1, 2, 3, 4, 5};
   	ft::set<int> s(arr, arr + 5);
   	ft::set<int>::reverse_iterator rit = s.rbegin();
-	std::cout << "\033[1;32m*rit++ Expectec 5: Realized: \033[0m" << *rit++ << std::endl;
-	std::cout << "\033[1;32m*rit++ Expectec 4: Realized: \033[0m" << *rit++ << std::endl;
-	std::cout << "\033[1;32m*rit++ Expectec 3: Realized: \033[0m" << *rit++ << std::endl;
-	std::cout << "\033[1;32m*rit++ Expectec 2: Realized: \033[0m" << *rit++ << std::endl;
-	std::cout << "\033[1;32m*rit++ Expectec 1: Realized: \033[0m" << *rit++ << std::endl;
+	std::cout << "\033[1;32m*rit++ Expected 5: Realized: \033[0m" << *rit++ << std::endl;
+	std::cout << "\033[1;32m*rit++ Expected 4: Realized: \033[0m" << *rit++ << std::endl;
+	std::cout << "\033[1;32m*rit++ Expected 3: Realized: \033[0m" << *rit++ << std::endl;
+	std::cout << "\033[1;32m*rit++ Expected 2: Realized: \033[0m" << *rit++ << std::endl;
+	std::cout << "\033[1;32m*rit++ Expected 1: Realized: \033[0m" << *rit++ << std::endl;
   
 	std::cout << "\033[1;32mft::set<int> const sc(arr, arr + 5); \033[0m\n";
 	std::cout << "\033[1;32mft::set<int>::const_reverse_iterator ritc = sc.rbegin(); \033[0m\n";
@@ -2775,11 +2776,11 @@ void test_69(void)
 	ft::set<int> const sc(arr, arr + 5);
 	ft::set<int>::const_reverse_iterator ritc = sc.rbegin();
 
-	std::cout << "\033[1;32m*ritc++ Expectec 5: Realized: \033[0m" << *ritc++ << std::endl;
-	std::cout << "\033[1;32m*ritc++ Expectec 4: Realized: \033[0m" << *ritc++ << std::endl;
-	std::cout << "\033[1;32m*ritc++ Expectec 3: Realized: \033[0m" << *ritc++ << std::endl;
-	std::cout << "\033[1;32m*ritc++ Expectec 2: Realized: \033[0m" << *ritc++ << std::endl;
-	std::cout << "\033[1;32m*ritc++ Expectec 1: Realized: \033[0m" << *ritc++ << std::endl;
+	std::cout << "\033[1;32m*ritc++ Expected 5: Realized: \033[0m" << *ritc++ << std::endl;
+	std::cout << "\033[1;32m*ritc++ Expected 4: Realized: \033[0m" << *ritc++ << std::endl;
+	std::cout << "\033[1;32m*ritc++ Expected 3: Realized: \033[0m" << *ritc++ << std::endl;
+	std::cout << "\033[1;32m*ritc++ Expected 2: Realized: \033[0m" << *ritc++ << std::endl;
+	std::cout << "\033[1;32m*ritc++ Expected 1: Realized: \033[0m" << *ritc++ << std::endl;
 
 	std::cout << std::endl;
 	std::cout << "----------------------------------------------" << std::endl;
@@ -2787,25 +2788,60 @@ void test_69(void)
 
 void test_70(void) 
 {
-	std::cout << "\033[1;31mTest 70: Test Map Insert\033[0m\n"<< std::endl;
+	std::cout << "\033[1;31mTest 70: Test Set Empty\033[0m\n"<< std::endl;
+	std::cout << "\033[1;32mft::set<int> s; \033[0m\n";
+	ft::set<int> s;
+	
+	std::cout << "\033[1;32ms.empty() Expectec 1: Realized:\033[0m" << s.empty()<< std::endl;
+	s.insert(1);
 
-
+	std::cout << "\033[1;32ms.insert(1); \033[0m\n";
+	std::cout << "\033[1;32ms.empty() Expectec 0: Realized: \033[0m" << s.empty()<< std::endl;
+ 
 	std::cout << std::endl;
 	std::cout << "----------------------------------------------" << std::endl;
 }
 
 void test_71(void) 
 {
-	std::cout << "\033[1;31mTest 71: Test Map Insert\033[0m\n"<< std::endl;
+	std::cout << "\033[1;31mTest 71: Test Set Size\033[0m\n"<< std::endl;
+	std::cout << "\033[1;32mft::set<int> s; \033[0m\n";
+	ft::set<int> s;
+	std::cout << "\033[1;32ms.size() Expectec 0: Realized: \033[0m" << s.size()<< std::endl;
+	
+	std::cout << "\033[1;32ms.insert(1); \033[0m\n";
+	s.insert(1);
+	std::cout << "\033[1;32ms.size() Expectec 1: Realized: \033[0m" << s.size()<< std::endl;
+	std::cout << "\033[1;32ms.insert(1); \033[0m\n";
 
-
+	s.insert(2);
+	std::cout << "\033[1;32ms.size() Expectec 2: Realized: \033[0m" << s.size()<< std::endl;
+	
+	std::cout << "\033[1;32ms.insert(1); \033[0m\n";
+	s.insert(3);
+	std::cout << "\033[1;32ms.size() Expectec 3: Realized: \033[0m" << s.size()<< std::endl;
+	
+	std::cout << "\033[1;32ms.insert(1); \033[0m\n";
+	s.insert(4);
+	std::cout << "\033[1;32ms.size() Expectec 4: Realized: \033[0m" << s.size()<< std::endl;
+	
+	std::cout << "\033[1;32ms.insert(1); \033[0m\n";
+	s.insert(5);
+	std::cout << "\033[1;32ms.size() Expectec 5: Realized: \033[0m" << s.size()<< std::endl;
+	
 	std::cout << std::endl;
 	std::cout << "----------------------------------------------" << std::endl;
 }
 
 void test_72(void) 
 {
-	std::cout << "\033[1;31mTest 72: Test Map Insert\033[0m\n"<< std::endl;
+	std::cout << "\033[1;31mTest 72: Test Set Max Size\033[0m\n"<< std::endl;
+	std::cout << "\033[1;32mft::set<int> s; \033[0m\n";
+	std::cout << "\033[1;32mstd::set<int> s2; \033[0m\n";
+  	ft::set<int> s;
+	std::set<int> s2;
+	std::cout << "\033[1;32ms.max_size() : \033[0m" << s.max_size()<< std::endl;
+	std::cout << "\033[1;32ms2.max_size() : \033[0m" << s2.max_size()<< std::endl;
 
 
 	std::cout << std::endl;
@@ -2814,25 +2850,108 @@ void test_72(void)
 
 void test_73(void) 
 {
-	std::cout << "\033[1;31mTest 73: Test Map Insert\033[0m\n"<< std::endl;
+	std::cout << "\033[1;31mTest 73: Test Set Insert\033[0m\n"<< std::endl;
+	std::cout << "\033[1;32mft::set<int> s; \033[0m\n";
+  	ft::set<int> s;
 
+	std::cout << "\033[1;32mft::pair<ft::set<int>::iterator, bool> ret = s.insert(1); \033[0m\n";
+  	ft::pair<ft::set<int>::iterator, bool> ret = s.insert(1);
+	bool test;
+	test = ret.first == s.begin();
+	std::cout << "\033[1;32mret.first == s.begin() ? Expected: 1, Realized: \033[0m" << test << std::endl;
 
+	std::cout << "\033[1;32mret = s.insert(1); \033[0m\n";
+	ret = s.insert(1);
+	test = ret.first == s.begin();
+	std::cout << "\033[1;32mret.first == s.begin() ? Expected: 1, Realized: \033[0m" << test << std::endl;
+
+	std::cout << "\033[1;32mft::set<int>::iterator it2; \033[0m\n";
+	std::cout << "\033[1;32mit2 = s.insert(s.begin(), 3); \033[0m\n";
+	ft::set<int>::iterator it2;
+	it2 = s.insert(s.begin(), 3);
+	std::cout << "\033[1;32m*it2 ? Expected: 3, Realized: \033[0m" << *it2 << std::endl;
+
+	std::cout << "\033[1;32mint arr[] = {4, 5, 6, 7, 8}; \033[0m\n";
+	std::cout << "\033[1;32ms.insert(arr, arr + 5); \033[0m\n";
+	int arr[] = {4, 5, 6, 7, 8};
+	s.insert(arr, arr + 5);
+	std::cout << "\033[1;32ms.size() ? Expected: 7, Realized: \033[0m" << s.size() << std::endl;
+	std::cout << "\033[1;32ms.count(4) ? Expected: 1, Realized: \033[0m" << s.count(4) << std::endl;
+
+  
 	std::cout << std::endl;
 	std::cout << "----------------------------------------------" << std::endl;
 }
 
 void test_74(void) 
 {
-	std::cout << "\033[1;31mTest 74: Test Map Insert\033[0m\n"<< std::endl;
+	std::cout << "\033[1;31mTest 74: Test Set Erase\033[0m\n"<< std::endl;
+	std::cout << "\033[1;32mint arr[] = {1, 2, 3, 4, 5}; \033[0m\n";
+	std::cout << "\033[1;32mft::set<int> s(arr, arr + 5); \033[0m\n";
+	std::cout << "\033[1;32m	ft::set<int>::iterator it = s.begin(); \033[0m\n";
+	std::cout << "\033[1;32mit++; \033[0m\n";
+	std::cout << "\033[1;32mit++; \033[0m\n";
+	std::cout << "\033[1;32mit++; \033[0m\n";
+	std::cout << "\033[1;32mit++; \033[0m\n";
 
+ 	int arr[] = {1, 2, 3, 4, 5};
+  	ft::set<int> s(arr, arr + 5);
+  	ft::set<int>::iterator it = s.begin();
+  	it++;
+  	it++;
+  	it++;
+  	it++;
 
-	std::cout << std::endl;
+	std::cout << "\033[1;32ms.erase(it); \033[0m\n";
+	s.erase(it);
+	std::cout << "\033[1;32ms.size() ? Expected: 4, Realized: \033[0m" << s.size() << std::endl;
+	std::cout << "\033[1;32ms.count(5) ? Expected: 0, Realized: \033[0m" << s.count(5) << std::endl;
+
+	std::cout << "\033[1;32ms.erase(1); \033[0m\n";
+	s.erase(1);
+	std::cout << "\033[1;32ms.size() ? Expected: 3, Realized: \033[0m" << s.size() << std::endl;
+	std::cout << "\033[1;32ms.count(1) ? Expected: 0, Realized: \033[0m" << s.count(1) << std::endl;
+	std::cout << "\033[1;32ms.count(2) ? Expected: 0, Realized: \033[0m" << s.count(2) << std::endl;
+
+	std::cout << "\033[1;32mft::set<int>::iterator it3 = s.begin(); \033[0m\n";
+	std::cout << "\033[1;32mit3++; \033[0m\n";
+	std::cout << "\033[1;32mit3++; \033[0m\n";
+	std::cout << "\033[1;32ms.erase(s.begin(), it3); \033[0m\n";
+	ft::set<int>::iterator it3 = s.begin();
+  	it3++;
+  	it3++;
+  	s.erase(s.begin(), it3);
+	std::cout << "\033[1;32ms.size() ? Expected: 1, Realized: \033[0m" << s.size() << std::endl;
+	std::cout << "\033[1;32ms.count(3) ? Expected: 0, Realized: \033[0m" << s.count(3) << std::endl;
+
+	std::cout << "\033[1;32ms.erase(s.begin(), s.end()); \033[0m\n";
+	s.erase(s.begin(), s.end());
+	std::cout << "\033[1;32ms.size() ? Expected: 0, Realized: \033[0m" << s.size() << std::endl;
+	std::cout << "\033[1;32ms.count(1) ? Expected: 0, Realized: \033[0m" << s.count(3) << std::endl;
+
+ 	std::cout << std::endl;
 	std::cout << "----------------------------------------------" << std::endl;
 }
 
 void test_75(void) 
 {
-	std::cout << "\033[1;31mTest 75: Test Map Insert\033[0m\n"<< std::endl;
+	std::cout << "\033[1;31mTest 75: Test Set Swap\033[0m\n"<< std::endl;
+	std::cout << "\033[1;32mint arr1[] = {1, 2, 3, 4, 5}; \033[0m\n";
+	std::cout << "\033[1;32mint arr2[] = {6, 7, 8, 9, 10}; \033[0m\n";
+	std::cout << "\033[1;32mft::set<int> s1(arr1, arr1 + 5); \033[0m\n";
+	std::cout << "\033[1;32mft::set<int> s2(arr2, arr2 + 5); \033[0m\n";
+
+	int arr1[] = {1, 2, 3, 4, 5};
+  	int arr2[] = {6, 7, 8, 9, 10};
+  	ft::set<int> s1(arr1, arr1 + 5);
+  	ft::set<int> s2(arr2, arr2 + 5);
+
+	std::cout << "\033[1;32ms1.swap(s2); \033[0m\n";
+  	s1.swap(s2);
+	std::cout << "\033[1;32ms1.size() ? Expected: 5, Realized: \033[0m" << s1.size() << std::endl;
+	std::cout << "\033[1;32ms2.size() ? Expected: 5, Realized: \033[0m" << s2.size() << std::endl;
+	std::cout << "\033[1;32ms1.count(6) ? Expected: 1, Realized: \033[0m" << s1.count(6) << std::endl;
+	std::cout << "\033[1;32ms2.count(1) ? Expected: 1, Realized: \033[0m" << s2.count(1) << std::endl;
 
 
 	std::cout << std::endl;
@@ -2841,7 +2960,21 @@ void test_75(void)
 
 void test_76(void) 
 {
-	std::cout << "\033[1;31mTest 76: Test Map Insert\033[0m\n"<< std::endl;
+	std::cout << "\033[1;31mTest 76: Test Set Clear\033[0m\n"<< std::endl;
+	std::cout << "\033[1;32mint arr[] = {1, 2, 3, 4, 5}; \033[0m\n";
+	std::cout << "\033[1;32mft::set<int> s(arr, arr + 5); \033[0m\n";
+	
+
+  	int arr[] = {1, 2, 3, 4, 5};
+  	ft::set<int> s(arr, arr + 5);
+	  
+	std::cout << "\033[1;32ms2.size() ? Expected: 5, Realized: \033[0m" << s.size() << std::endl;
+	std::cout << "\033[1;32ms1.count(1) ? Expected: 1, Realized: \033[0m" << s.count(1) << std::endl;
+	std::cout << "\033[1;32ms1.count(5) ? Expected: 1, Realized: \033[0m" << s.count(5) << std::endl;
+	std::cout << "\033[1;32ms.clear(); \033[0m\n";
+  	s.clear();
+	std::cout << "\033[1;32ms2.size() ? Expected: 0, Realized: \033[0m" << s.size() << std::endl;
+	std::cout << "\033[1;32ms1.count(1) ? Expected: 0, Realized: \033[0m" << s.count(1) << std::endl;
 
 
 	std::cout << std::endl;
@@ -2850,8 +2983,16 @@ void test_76(void)
 
 void test_77(void) 
 {
-	std::cout << "\033[1;31mTest 77: Test Map Insert\033[0m\n"<< std::endl;
-
+	std::cout << "\033[1;31mTest 77: Test Set Key Compare\033[0m\n"<< std::endl;
+	std::cout << "\033[1;32mint arr[] = {1, 2, 3, 4, 5}; \033[0m\n";
+	std::cout << "\033[1;32mft::set<int> s(arr, arr + 5); \033[0m\n";
+	std::cout << "\033[1;32mft::set<int>::key_compare cmp = s.key_comp(); \033[0m\n";
+	int arr[] = {1, 2, 3, 4, 5};
+  	ft::set<int> s(arr, arr + 5);
+	ft::set<int>::key_compare cmp = s.key_comp();
+	std::cout << "\033[1;32mcmp(1, 2) ? Expected: 1, Realized: \033[0m" << cmp(1, 2) << std::endl;
+	std::cout << "\033[1;32mcmp(2, 1) ? Expected: 0, Realized: \033[0m" << cmp(2, 1) << std::endl;
+	std::cout << "\033[1;32mcmp(1, 1) ? Expected: 0, Realized: \033[0m" << cmp(1, 1) << std::endl;
 
 	std::cout << std::endl;
 	std::cout << "----------------------------------------------" << std::endl;
@@ -2859,8 +3000,16 @@ void test_77(void)
 
 void test_78(void) 
 {
-	std::cout << "\033[1;31mTest 78: Test Map Insert\033[0m\n"<< std::endl;
-
+	std::cout << "\033[1;31mTest 78: Test Set Value Compare\033[0m\n"<< std::endl;
+	std::cout << "\033[1;32mint arr[] = {1, 2, 3, 4, 5}; \033[0m\n";
+	std::cout << "\033[1;32mft::set<int> s(arr, arr + 5); \033[0m\n";
+	std::cout << "\033[1;32mft::set<int>::value_compare cmp = s.value_comp(); \033[0m\n";
+	int arr[] = {1, 2, 3, 4, 5};
+  	ft::set<int> s(arr, arr + 5);
+	ft::set<int>::value_compare cmp = s.value_comp();
+	std::cout << "\033[1;32mcmp(1, 2) ? Expected: 1, Realized: \033[0m" << cmp(1, 2) << std::endl;
+	std::cout << "\033[1;32mcmp(2, 1) ? Expected: 0, Realized: \033[0m" << cmp(2, 1) << std::endl;
+	std::cout << "\033[1;32mcmp(1, 1) ? Expected: 0, Realized: \033[0m" << cmp(1, 1) << std::endl;
 
 	std::cout << std::endl;
 	std::cout << "----------------------------------------------" << std::endl;
@@ -2868,7 +3017,34 @@ void test_78(void)
 
 void test_79(void) 
 {
-	std::cout << "\033[1;31mTest 79: Test Map Insert\033[0m\n"<< std::endl;
+	std::cout << "\033[1;31mTest 79: Test Set Find\033[0m\n"<< std::endl;
+	std::cout << "\033[1;32mint arr[] = {1, 2, 3, 4, 5}; \033[0m\n";
+	std::cout << "\033[1;32mft::set<int> s(arr, arr + 5); \033[0m\n";
+	
+	int arr[] = {1, 2, 3, 4, 5};
+	ft::set<int> s(arr, arr + 5);
+	
+	std::cout << "\033[1;32mft::set<int>::iterator it = s.find(1); \033[0m\n";
+  	ft::set<int>::iterator it = s.find(1);
+	bool test;
+	test = it != s.end();
+	std::cout << "\033[1;32mit != s.end() ? Expected: 1, Realized: \033[0m" << test << std::endl;
+	std::cout << "\033[1;32m*it ? Expected: 1, Realized: \033[0m" << *it << std::endl;
+	
+	std::cout << "\033[1;32mit = s.find(6); \033[0m" << *it << std::endl;
+  	it = s.find(6);
+	test = it == s.end();
+	std::cout << "\033[1;32mit == s.end() ? Expected: 1, Realized: \033[0m" << test << std::endl;
+
+	std::cout << "\033[1;32mft::set<int> const s2(arr, arr + 5); \033[0m\n";
+	ft::set<int> const s2(arr, arr + 5);
+  
+	std::cout << "\033[1;32mft::set<int>::const_iterator cit = s2.find(1); \033[0m\n";
+  	ft::set<int>::const_iterator cit = s2.find(1);
+
+	test = cit != s2.end();
+	std::cout << "\033[1;32mcit != s2.end() ? Expected: 1, Realized: \033[0m" << test << std::endl;
+	std::cout << "\033[1;32m*cit ? Expected: 1, Realized: \033[0m" << *cit << std::endl;
 
 
 	std::cout << std::endl;
@@ -2877,8 +3053,260 @@ void test_79(void)
 
 void test_80(void) 
 {
-	std::cout << "\033[1;31mTest 80: Test Map Insert\033[0m\n"<< std::endl;
+	std::cout << "\033[1;31mTest 80: Test Set Count\033[0m\n"<< std::endl;
+	std::cout << "\033[1;32mint arr[] = {1, 2, 3, 4, 5}; \033[0m\n";
+	std::cout << "\033[1;32mft::set<int> s(arr, arr + 5); \033[0m\n";
 
+  	int arr[] = {1, 2, 3, 4, 5};
+  	ft::set<int> s(arr, arr + 5);
+	std::cout << "\033[1;32ms.count(1) ? Expected: 1, Realized: \033[0m" << s.count(1) << std::endl;
+	std::cout << "\033[1;32ms.count(6) ? Expected: 0, Realized: \033[0m" << s.count(6) << std::endl;
+
+  
+	std::cout << std::endl;
+	std::cout << "----------------------------------------------" << std::endl;
+}
+
+void test_81(void) 
+{
+	std::cout << "\033[1;31mTest 81: Test Set Lower Bound\033[0m\n"<< std::endl;
+	std::cout << "\033[1;32mint arr[] = {1, 2, 3, 4, 5}; \033[0m\n";
+	std::cout << "\033[1;32mft::set<int> s(arr, arr + 5); \033[0m\n";
+  	int arr[] = {1, 2, 3, 4, 5};
+  	ft::set<int> s(arr, arr + 5);
+
+	std::cout << "\033[1;32mft::set<int>::iterator it = s.lower_bound(1); \033[0m\n";
+ 	ft::set<int>::iterator it = s.lower_bound(1);
+	bool test;
+	test = it != s.end();
+	std::cout << "\033[1;32mit != s.end() ? Expected: 1, Realized: \033[0m" << test << std::endl;
+	std::cout << "\033[1;32m*it ? Expected: 1, Realized: \033[0m" << *it << std::endl;
+ 
+	std::cout << "\033[1;32mit = s.lower_bound(6); \033[0m\n";
+	it = s.lower_bound(6);
+	test = it == s.end();
+	std::cout << "\033[1;32mit == s.end() ? Expected: 1, Realized: \033[0m" << test << std::endl;
+  
+  	std::cout << "\033[1;32mft::set<int> const s2(arr, arr + 5); \033[0m\n";
+	std::cout << "\033[1;32mft::set<int>::const_iterator cit = s2.lower_bound(1); \033[0m\n";
+
+  	ft::set<int> const s2(arr, arr + 5);
+  	ft::set<int>::const_iterator cit = s2.lower_bound(1);
+	test = cit != s2.end();
+	std::cout << "\033[1;32mcit != s2.end() ? Expected: 1, Realized: \033[0m" << test << std::endl;
+	std::cout << "\033[1;32m*cit ? Expected: 1, Realized: \033[0m" << *cit << std::endl;
+
+
+	std::cout << std::endl;
+	std::cout << "----------------------------------------------" << std::endl;
+}
+
+void test_82(void) 
+{
+	std::cout << "\033[1;31mTest 82: Test Set Upper Bound\033[0m\n"<< std::endl;
+	std::cout << "\033[1;32mint arr[] = {1, 2, 3, 4, 5}; \033[0m\n";
+	std::cout << "\033[1;32mft::set<int> s(arr, arr + 5); \033[0m\n";
+  	int arr[] = {1, 2, 3, 4, 5};
+  	ft::set<int> s(arr, arr + 5);
+
+	std::cout << "\033[1;32mft::set<int>::iterator it = s.upper_bound(1); \033[0m\n";
+ 	ft::set<int>::iterator it = s.upper_bound(1);
+	bool test;
+	test = it != s.end();
+	std::cout << "\033[1;32mit != s.end() ? Expected: 1, Realized: \033[0m" << test << std::endl;
+	std::cout << "\033[1;32m*it ? Expected: 2, Realized: \033[0m" << *it << std::endl;
+ 
+	std::cout << "\033[1;32mit = s.upper_bound(6); \033[0m\n";
+	it = s.upper_bound(6);
+	test = it == s.end();
+	std::cout << "\033[1;32mit == s.end() ? Expected: 1, Realized: \033[0m" << test << std::endl;
+  
+  	std::cout << "\033[1;32mft::set<int> const s2(arr, arr + 5); \033[0m\n";
+	std::cout << "\033[1;32mft::set<int>::const_iterator cit = s2.upper_bound(1); \033[0m\n";
+
+  	ft::set<int> const s2(arr, arr + 5);
+  	ft::set<int>::const_iterator cit = s2.upper_bound(1);
+	test = cit != s2.end();
+	std::cout << "\033[1;32mcit != s2.end() ? Expected: 1, Realized: \033[0m" << test << std::endl;
+	std::cout << "\033[1;32m*cit ? Expected: 2, Realized: \033[0m" << *cit << std::endl;
+
+
+
+	std::cout << std::endl;
+	std::cout << "----------------------------------------------" << std::endl;
+}
+
+void test_83(void) 
+{
+	std::cout << "\033[1;31mTest 83: Test Set Equal Range\033[0m\n"<< std::endl;
+	std::cout << "\033[1;32mint arr[] = {1, 2, 3, 4, 5}; \033[0m\n";
+	std::cout << "\033[1;32mft::set<int> s(arr, arr + 5); \033[0m\n";
+	int arr[] = {1, 2, 3, 4, 5};
+  	ft::set<int> s(arr, arr + 5);
+
+	std::cout << "\033[1;32mft::pair<ft::set<int>::iterator, ft::set<int>::iterator> p = s.equal_range(1); \033[0m\n";
+  	ft::pair<ft::set<int>::iterator, ft::set<int>::iterator> p = s.equal_range(1);
+	
+	bool test;
+	test = p.first != s.end();
+	std::cout << "\033[1;32mp.first != s.end() ? Expected: 1, Realized: \033[0m" << test << std::endl;
+	std::cout << "\033[1;32m*p.first ? Expected: 1, Realized: \033[0m" << *p.first << std::endl;
+	test = p.second != s.end();
+	std::cout << "\033[1;32mp.second != s.end() ? Expected: 1, Realized: \033[0m" << test << std::endl;
+	std::cout << "\033[1;32m*p.second ? Expected: 2, Realized: \033[0m" << *p.second << std::endl;
+
+	std::cout << "\033[1;32m p = s.equal_range(6); \033[0m\n";
+	p = s.equal_range(6);
+	test =p.first == s.end();
+	std::cout << "\033[1;32mp.second != s.end() ? Expected: 1, Realized: \033[0m" << test << std::endl;
+	test =p.second == s.end();
+	std::cout << "\033[1;32mp.second == s.end() ? Expected: 1, Realized: \033[0m" << test << std::endl;
+  
+	std::cout << "\033[1;32mft::set<int> const s2(arr, arr + 5); \033[0m\n";
+	std::cout << "\033[1;32mft::pair<ft::set<int>::const_iterator, ft::set<int>::const_iterator> cp = s2.equal_range(1); \033[0m\n";
+
+    ft::set<int> const s2(arr, arr + 5);
+  	ft::pair<ft::set<int>::const_iterator, ft::set<int>::const_iterator> cp = s2.equal_range(1);
+
+	test = cp.first != s2.end();
+	std::cout << "\033[1;32mcp.first != s2.end() ? Expected: 1, Realized: \033[0m" << test << std::endl;
+	std::cout << "\033[1;32m*cp.first ? Expected: 1, Realized: \033[0m" << *cp.first << std::endl;
+	test = cp.second != s2.end();
+	std::cout << "\033[1;32mcp.second != s2.end() ? Expected: 1, Realized: \033[0m" << test << std::endl;
+	std::cout << "\033[1;32m*cp.second ? Expected: 2, Realized: \033[0m" << *cp.second << std::endl;
+
+	std::cout << std::endl;
+	std::cout << "----------------------------------------------" << std::endl;
+}
+
+void test_84(void) 
+{
+	std::cout << "\033[1;31mTest 84: Test Set Get Allocator\033[0m\n"<< std::endl;
+	std::cout << "\033[1;32mft::set<int> s; \033[0m\n";
+	std::cout << "\033[1;32mstd::allocator<int> alloc; \033[0m\n";
+  	
+	ft::set<int> s;
+  	std::allocator<int> alloc;
+
+	bool test;
+	test = s.get_allocator() == alloc;
+	std::cout << "\033[1;32ms.get_allocator() == alloc ? Expected: 1, Realized: \033[0m" << test << std::endl;
+	
+	std::cout << std::endl;
+	std::cout << "----------------------------------------------" << std::endl;
+}
+
+void test_85(void) 
+{
+	std::cout << "\033[1;31mTest 85: Test Set Comparison Operators\033[0m\n"<< std::endl;
+	std::cout << "\033[1;32mft::set<int> s1; \033[0m\n";
+	std::cout << "\033[1;32mft::set<int> s2; \033[0m\n";
+	std::cout << "\033[1;32mft::set<int> s3; \033[0m\n";
+
+  	ft::set<int> s1;
+  	ft::set<int> s2;
+  	ft::set<int> s3;
+
+	std::cout << "\033[1;32ms1.insert(1); \033[0m\n";
+	std::cout << "\033[1;32ms1.insert(2); \033[0m\n";
+	std::cout << "\033[1;32ms1.insert(3); \033[0m\n";
+	std::cout << "\033[1;32ms1.insert(4); \033[0m\n";
+	std::cout << "\033[1;32ms1.insert(5); \033[0m\n";
+	std::cout << "\033[1;32ms2.insert(1); \033[0m\n";
+	std::cout << "\033[1;32ms2.insert(2); \033[0m\n";
+	std::cout << "\033[1;32ms2.insert(3); \033[0m\n";
+	std::cout << "\033[1;32ms2.insert(4); \033[0m\n";
+	std::cout << "\033[1;32ms2.insert(5); \033[0m\n";
+	std::cout << "\033[1;32ms3.insert(6); \033[0m\n";
+	std::cout << "\033[1;32ms3.insert(7); \033[0m\n";
+	std::cout << "\033[1;32ms3.insert(8); \033[0m\n";
+	std::cout << "\033[1;32ms3.insert(9); \033[0m\n";
+	std::cout << "\033[1;32ms3.insert(10); \033[0m\n";
+	
+	s1.insert(1);
+	s1.insert(2);
+	s1.insert(3);
+	s1.insert(4);
+	s1.insert(5);
+	s2.insert(1);
+	s2.insert(2);
+	s2.insert(3);
+	s2.insert(4);
+	s2.insert(5);
+	s3.insert(6);
+	s3.insert(7);
+	s3.insert(8);
+	s3.insert(9);
+	s3.insert(10);
+
+	bool test;
+	test = s1 == s2;
+	std::cout << "\033[1;32ms1 == s2 ? Expected: 1, Realized: \033[0m" << test << std::endl;
+	test = s1 != s2;
+	std::cout << "\033[1;32ms1 != s2 ? Expected: 0, Realized: \033[0m" << test << std::endl;
+	test = s1 < s2;
+	std::cout << "\033[1;32ms1 < s2 ? Expected: 0, Realized: \033[0m" << test << std::endl;
+	test = s1 <= s2;
+	std::cout << "\033[1;32ms1 <= s2 ? Expected: 1, Realized: \033[0m" << test << std::endl;
+  	test = s1 > s2;
+	std::cout << "\033[1;32ms1 > s2 ? Expected: 0, Realized: \033[0m" << test << std::endl;
+	test = s1 >= s2;
+	std::cout << "\033[1;32ms1 >= s2 ? Expected: 1, Realized: \033[0m" << test << std::endl;
+	test = s3 > s2;
+	std::cout << "\033[1;32ms3 > s2 ? Expected: 1, Realized: \033[0m" << test << std::endl;
+	test = s3 >= s2;
+	std::cout << "\033[1;32ms3 >= s2 ? Expected: 1, Realized: \033[0m" << test << std::endl;
+	test = s2 < s3;
+	std::cout << "\033[1;32ms2 < s3 ? Expected: 1, Realized: \033[0m" << test << std::endl;
+	test = s2 <= s3;
+	std::cout << "\033[1;32ms2 <= s3 ? Expected: 1, Realized: \033[0m" << test << std::endl;
+
+	std::cout << std::endl;
+	std::cout << "----------------------------------------------" << std::endl;
+}
+
+void test_86(void) 
+{
+	std::cout << "\033[1;31mTest 86: Test Set Swap Overload\033[0m\n"<< std::endl;
+	std::cout << "\033[1;32mft::set<int> s1; \033[0m\n";
+	std::cout << "\033[1;32mft::set<int> s2; \033[0m\n";
+	
+	ft::set<int> s1;
+  	ft::set<int> s2;
+
+	std::cout << "\033[1;32ms1.insert(1); \033[0m\n";
+	std::cout << "\033[1;32ms1.insert(2); \033[0m\n";
+	std::cout << "\033[1;32ms1.insert(3); \033[0m\n";
+	std::cout << "\033[1;32ms2.insert(4); \033[0m\n";
+	std::cout << "\033[1;32ms2.insert(5); \033[0m\n";
+	std::cout << "\033[1;32ms2.insert(6); \033[0m\n";
+	
+	s1.insert(1);
+	s1.insert(2);
+	s1.insert(3);
+	s2.insert(4);
+	s2.insert(5);
+	s2.insert(6);
+
+	std::cout << "\033[1;32mft::swap(s1, s2); \033[0m\n";
+  	ft::swap(s1, s2);
+
+	std::cout << "\033[1;32ms1.size() ? Expected: 3, Realized: \033[0m" << s1.size() << std::endl;
+	std::cout << "\033[1;32ms2.size() ? Expected: 3, Realized: \033[0m" << s2.size() << std::endl;
+
+	std::cout << "\033[1;32mft::set<int>::iterator it = s1.begin(); \033[0m\n";
+  	ft::set<int>::iterator it = s1.begin();
+	  
+	std::cout << "\033[1;32m*it++ ? Expected: 4, Realized: \033[0m" << *it++ << std::endl;
+	std::cout << "\033[1;32m*it++ ? Expected: 5, Realized: \033[0m" << *it++ << std::endl;
+	std::cout << "\033[1;32m*it ? Expected: 6, Realized: \033[0m" << *it << std::endl;
+	
+	std::cout << "\033[1;32mit = s2.begin(); \033[0m\n";
+	it = s2.begin();
+
+	std::cout << "\033[1;32m*it++ ? Expected: 1, Realized: \033[0m" << *it++ << std::endl;
+	std::cout << "\033[1;32m*it++ ? Expected: 2, Realized: \033[0m" << *it++ << std::endl;
+	std::cout << "\033[1;32m*it ? Expected: 3, Realized: \033[0m" << *it << std::endl;
 
 	std::cout << std::endl;
 	std::cout << "----------------------------------------------" << std::endl;
@@ -2956,5 +3384,22 @@ int main(void)
 	test_67();
 	test_68();
 	test_69();
+	test_70();
+	test_71();
+	test_72();
+	test_73();
+	test_74();
+	test_75();
+	test_76();
+	test_77();
+	test_78();
+	test_79();
+	test_80();
+	test_81();
+	test_82();
+	test_83();
+	test_84();
+	test_85();
+	test_86();
 	return (0);
 }
