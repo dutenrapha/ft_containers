@@ -15,6 +15,7 @@
 
 #include "pair.hpp"
 #include <stdlib.h>
+#include "algorithm.hpp"
 #include "RBTree.hpp"
 
 namespace ft

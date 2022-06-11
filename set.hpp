@@ -15,16 +15,12 @@
 #define SET_HPP
 
 #include <stdlib.h>
+#include "pair.hpp"
+#include "algorithm.hpp"
 #include "RBTree.hpp"
 
 namespace ft
 {
-	// template<class K, class T = K> 
-	// struct Identity
-	// {
-	// 	const K &operator()(const T &t) const { return t; }
-	// };
-	
 	#define SUPER  RBTree<T,T,Identity<T>,Cmp,Alloc>
 	template <class T, class Cmp = std::less<T>, class Alloc = std::allocator<T> >
 	class set: public SUPER
